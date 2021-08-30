@@ -2,21 +2,75 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-	<h1>Quantum Tarot</h1>
-	<pre>
-		<div class="data">
-			<div id="key_2" class="key"></div>
-			<div id="key_1" class="key"></div>
-			<div id="key_3" class="key"></div>
-		</div>
-	</pre>
+	<h1><a href="#" id="home">Quantum Divine</a></h1>
+	<br>
+	<ul class="front_ul"><li><a id="draw_tarot" href="#">Draw Tarot</li><li><a id="draw_iching" href="#">Draw IChing</a><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></li></ul>
+	<br>
+	<h2 class="quantum_shift"></h2>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="intro">
+		<!--washington !-->
+		<span>Quantum Divine makes an inline call to a Quantum Computer to render Iching and Tarot (ascii) from a single HTML page.</span> 
+	</div>
+	<br>
+	<div class="tarot">
+		<pre>
+			<div class="data">
+				<div id="key_2" class="key"></div>
+				<div id="key_1" class="key"></div>
+				<div id="key_3" class="key"></div>
+			</div>		
+		</pre>
+	</div>
+	<div class="iching">
+	</div>
 	
 
 	<script>
 		$(document).ready(function(){
+			$("#home").click(function(e){
+				e.preventDefault();
+				$(".tarot").hide();
+				$(".iching").hide();
+				$(".intro").show();
+			})
+
+			$("#draw_tarot").click(function(e){
+				$(".intro").hide();
+				$(".iching").hide();
+				$(".tarot").show();
+				e.preventDefault();
+				$(".quantum-shift").text("Draw Tarot");
+				openingKeySpread()
+			})
+
+			$("#draw_iching").click(function(e){
+				$(".intro").hide()
+				$(".tarot").hide();
+				$(".iching").show();
+				e.preventDefault();
+				$(".quantum-shift").text("Draw IChing");
+				iching(function(err, data){
+					$(".iching").append(HEXAGRAMS[data]);
+				});
+			})
+
+
+		const HEXAGRAMS = {
+    1: '䷁ \n\n\nKHWAN: Great, originating, right and fair,\nPiercing and helpful, firm as in the mare.\nIf the true man should move, his feet will stray;\nFor him to follow is his proper way.\n\n\nHoar-frost! The strong one cometh by and by.\nStraight, square and great, advantage springs to eye.\nMaintain, but boast not virtue’s majesty.\nHere is a sack made safe by skillful tie.\nBehold the yellow skirt; ill fortune fly.\nDragons at war: Gold, blood and porphyry.\n\n(Correct and firm the conduct, thou shalt spy\ngood fortune from the sky.) ', 2: '䷖ \n\n\nPO: Falling; overturning; when things quake\nto agitate them more is a mistake.\n\nInjure the couch’s legs, soon all will go;\nInjure its frame, soon total overthrow.\nDestroy, when need is — will not wisdom show?\nThe couch destroyed, its occupant hath woe.\nBe loyal, help thy followers; all’s aglow.\nThat’ll bear thee brave; the small man digs his grave. ', 3: '䷇ \n\n\nPI: Union. First examine, art thou right?\nThen the restless join thee; woe the laggard’s plight.\n\n\nSincerity of union is the key;\nFrom inward mind comes forth true unity.\nUnite not with unworth’s iniquity!\nThere’s one beyond thyself that yearns for thee.\nBase well thy tower upon the people’s power.\nThy first step missed? Disaster shalt thou see. ', 4: '䷓ \n\n\nKWAN: Manifesting; contemplating; see\nthou be sincere, pure, just, with dignity.\n\n\nThoughtless and boyish: little shalt thou see!\nPeep from thy door — a woman’s modesty.\nConsider thine whole course insistently.\nState’s weal resolved, seek aid of majesty.\nConsider thy life’s course, lest action err,\nAnd criticise thy soul’s true character. ', 5: '䷏ \n\n\nYU: Satisfaction spreads through all thy coasts.\nAppoint thy princes, and send forth thy hosts!\n\n\nBoast not of pleasure! There lurks overthrow.\nBe firm, with foresight all thy soul aglow.\nPresume not; understand — what came may go!\nShed happiness, call friends to share success!\nMake not a habit; joy\'s as dull as woe.\nOh! Think more deeply; change is wisdom’s throw! ', 6: '䷢ \n\n\nZIN: To advance — when thou hast won folk ease,\nthy lord shall give thee gifts and dignities.\n\n\nFirm, patient and great hearted, wait thy day!\nMove with regret — the royal mother’s way!\nConfidence thus begotten — why delay?\nAdvance by stealth; the marmot guide thee yet;\nWoo not success; the games’s the game to play.\nUse power with caution or beware regret! ', 7: '䷬ \n\n\nZHUI: Collection; to the shrine repair\nand sacrifice the greatest victories there!\n\n\nAlone, art helpless; call thy right ally;\nWith him, even small prayers earn heaven’s swift reply.\nBaffled, yet struggling, thou shalt cease to sigh.\nSuccess excuses boldness; recollect\nthen to be firm in virtue and correct!\nWeep for thy loneliness — but still aim high! ', 8: '䷋ \n\n\nPHI: All’s disorder in the organum.\nWe see the great gone, and the little come.\n\n\nAgain one stalk pulled brings the others too.\nPatience, obedience, fitness, build anew.\nShame hide thy purpose from thy own right view!\nAct rightly; comrades come to love thee and wonder.\nRestoring all things, murmur, We may blunder.\nThe darkness passes; light breaks forth from under.', 9: '䷎ \n\n\nCHIEN: Humility; this yeast’s to baking.\nA man may win in every undertaking.\n\n\nIncrease humilities; so clears the way!\nOnce recognized, who is there to gainsay?\nAcknowledged merit will success inherit.\nGrow thou more truly humble every day.\nThus all thy neighbors in thy cause array.\nUse force — but only on the proper prey! ', 10: '䷳ \n\n\nKAN: Earth; keep silence like thy spine! See none\nabout thee! Thus the silk of wisdom’s spun.\n\n\nPlant firm thy feet; repose be now thy law.\nThy legs — ’twere ill to advance them or withdraw.\nIf loins move, the heart’s liable to riot.\nKeep still thy body’s fidgets, Johnny raw,\nand, for the love of heaven hold thy jaw!\nFortune attends who persevere in quiet.', 11: '䷦ \n\n\nKIEN: Incompetence and lameness; time\nfor the great man to aid thee in the climb.\n\n\nAdvance adds trouble; stillness aids thee now.\nKeep struggling with no self to mar thy vow.\nAdvance not; seek again thine ancient clan!\nAdvance not; be with those united thou.\nStruggle! Friends come to prosecute thy plan.\nAdvance not! Wait for aid from the great man! ', 12: '䷴ \n\n\nKIEN: Gradual progress: be thy right firm carriage\nsuggestive of a lady’s decent marriage.\n\n\nWild geese approach the shore — with care they fly!\nThey reach the rocks — and pasture joyfully.\nDry plains they cross — it needs a vigorous wing!\nThey reach the trees, and rest; but not too high.\nAt last they gain the goal of traveling;\nSee on broad heights their feathers glittering. ',
+    13: '䷽ \n\n\nHSIAO KWO: Exceeding in small things I’ve heard\nto soar too high is risky for the bird.\n\n\nThe issue’s evil when birds soar too high;\nThe wisest course is humble loyalty.\nWithout precautions, enemies assail;\nBut adaptation and sound care prevail.\nBirds in a cave — sure marks for archer’s eye!\nAmbition, in bad times, is lunacy.\n\nor\n\nHSIAO KWO: Excessive trifles; but beware\nin great things not to trust thyself to air.\n\n\nWinged though thou be, soar not too rashly high!\nLet not self seeking out run loyalty!\nMen be incaution ask their foes to assail;\nTact and adroitness helps one to prevail.\nAt easiest mark, let thine arrows fly!\nUncurbed ambition courts calamity. ', 14: '䷷ \n\n\nLU: Stranger, Firm right conduct may unravel\nmost of the tangles incident to travel.\n\n\nMean men by menial toil increase their woe;\nWell lodged, served, monied men more easy go.\nHis house on fire, his servants fled, ’ware danger.\nThough rich, armed, rested, still set caution ranger!\nGood manners, self effacement with the throw;\nwhile arrogance and violence hurt the stranger. ', 15: '䷞ \n\n\nHSIEN: Mutual influence; good fortune bless\nMan’s firm correctness with the tide, success.\n\n\nWould’st walk? To move thy toes alone is a flaw;\nBut calves? ’Twere surely better to withdraw.\nThigh’s too? Cling close to leaders? Thou wilt rue it.\nInsited plans? Only thy friends pursue it.\nBut shrug thy shoulders! God shall gladly view it.\nThe wag not thy tongue, nor drop thy jaw! ', 16: '䷠ \n\n\nTHUN: A retirement. Though thy force be spent.\nAdroit withdrawal masters the event!\n\n\nPeril! Withdraw! Keep still — though tail yet show.\nHold fast thy purpose subtly, even so.\nGracious to them that bind thee; hate their ire;\nmaugre their will, the great have wit to retire.\nRetreat in order — even the gods admire.\nRetreat with dignity — rekindle fire. ', 17: '䷆ \n\n\nSZE: Armies; all depends upon the sage,\nHis ripe experience, and his wisdom’s age.\n\n\nMark well the rules of martial strategy.\nChief of the host, thy king confers the post.\nDivided counsel — inefficiency!\nRetreat is not an error if need be.\nSeek and destroy bad faith and mutiny!\nBut find good men for posts of dignity.', 18: '䷃ \n\n\nMANG: Inexperience; let them see the sage.\nOne gains his smile; twice will excite his rage.\n\n\nCorrect him once to free; twice? Let him go!\nTreat fools and women kindly, they\'ve their uses.\nWed not loose women, only that they know.\nChains bind the ignorant, and sorrows flow.\nYet — the great fool! Simplicity’s good glow!\nProtect the ignorant from all abuses! ', 19: '䷜ \n\n\nKHAN: Defile, cavern, pit: In times of danger\nmake not sincerity of act a stranger.\n\n\nGorge within gorge, then cavern — do not go!\nInvolve not deeplier thy dangerous case!\nPeril all round — Be still’s the luckiest show!\nInstructing king’s, most humble caution show!\nBe patient, time brings order with grave pace.\nBound and beset, bewildered too? What woe! ', 20: '䷺ \n\n\nHWAN: Dissipation; in the world of fools.\nThe kingly man stands firm, divides and rules.\n\n\nOne needs a horse in this world’s mob-mellay;\nOne needs a refuge, a secure shrewd plan.\nWe must have knocks, nor mind them, in the fray.\nScatter the mob, then pick the choice array.\nCommand the mob, and fill their bellies, man!\nGood end forgets how badly it began. ', 21: '䷧ \n\n\nKIEH: Loosing; if all’s won, return and rest.\nIf partial gain, quick action will be best.\n\n\nBegin to loosen — Straight and clear the way.\nRid fields of foxes; fill the golden quiver.\nBeggars on horseback tempt the brigand’s play.\nStand not to oppose the friends come to deliver.\nRemove all wrong; then all men own thy sway.\nThe prince the falcon on the wall shall slay. ', 22: '䷿ \n\n\nWEI ZI: Work ruined! Ah so nearly crossed\nthe stream! Step slackly once, and all is lost!\n\n\nIs thy force equal to thy task? else try not!\nRetire in the face of overwhelming odds.\nTo the world\'s mote thine own eye\'s beam apply not!\nWar patient through persistent periods!\nSo win to fortune, fame and flame that die not;\nmasterful, modest, feast thou with the gods. ', 23: '䷮ \n\n\nKHWAN: Straitened and distressed; the great man acts.\nBut rhetoric is far removed from facts.\n\n\nBare buttocks — tree stump — valley — hopes decay.\nEmbarrassed king, be quiet and sincere!\nRocks, thorns — come home, and find thy wife astray.\nEven with friends the course is hard to steer.\nRebellion? Honesty has nought to fear.\nBound? On the brink? Repent and take thy way! ',
+    24: '䷅ \n\n\nSUNG: Strife: be cautious; seek not the extreme.\nSeek help from friends, and do not cross the stream.\n\n\nPerpetuate not strife, though slandered thou.\nO’ermatched, retire, concealment be thy friend!\nMaintain thy place, but claim no glory now.\nO’ermatched, the study of heaven’s law perpend.\nNow with great fortune on thy side contend!\nVictorious, the fruit’s bitter in the end. ', 25: '䷭ \n\n\nSHANG: The ascent; go seek the lofty one!\nAnd in the south give worship to the sun!\n\n\nMake thyself welcome with the great; aim high!\nSmall gifts are sweetened by sincere good will.\nBut empty cities ’ art thou bold to fill?\nThe king rewards thy true sincerity;\nAscend the stairs with proper dignity.\nFirm right maintain, though blind the silent sky! ', 26: '䷑ \n\n\nKU: Service. Thou mayst cross the stream no doubt,\nif thou have fully thought thy purpose out.\n\n\nGood son, repair thy sire’s infirmity;\nBe gentle with thy mother’s frailty, Son.\nYea, clear thy father’s troubles, every one.\nRestrain thy course; view them indulgently.\nThus gain the praise of thine utility.\nDo what thou wilt, thyself, a slave to none! ', 27: '䷯ \n\n\nZING: Well; the common fountain of increase.\nIf kept with care, its virtues never cease.\n\n\nMuddy or dried, what use? Beware decay.\nLeaky: for shame! The worker is disgraced.\nClear, but unused; how senseless is the waste!\nWell laid and lined, how noble the display.\nCome drink the water — cold, pellucid — chaste.\nHere to the brim it bubbles — go thy way! ', 28: '䷸ \n\n\nSUN: Wood, wind; mark their subtly suave persistance!\nElastic ease, the line of least resistance.\n\n\nInfirm of purpose, learn the soldier\'s way.\nAsk humbly of the gods to guide thy course!\nViolent excess of struggle breeds remorse.\nWide forethoughts and shrewd tactics pledge thee prey.\nWith steady, easy strokes apply thy force.\nFear, indecision, sap the last resource. ', 29: '䷟ \n\n\nHANG: By persistance are great empires built.\nThere is no law beyond do what thou wilt,\n\n\nLust of result mars will in every way;\nBut steadfast purpose spans the vast abysm.\nMaintain thy virtue — heed not criticism!\nSeek not reward; thy work be its own chris,\nPassion love wins, where active loses, fray;\nAnd violent efforts end in swift decay. ', 30: '䷱ \n\n\nTING: Cauldron; firm its auspice we may guess,\nrealization, progress, and success.\n\n\nUpset the foul pots! thy whore earns mother fee.\nBefore thou eat set guards about thy table!\nFrowns failure if thou be not equitable.\nThen shame on thee; thy case is pitiable.\nGold ornaments men’s firm sincerity.\nAnd rings of jade attest him honourable! ', 31: '䷛ \n\n\nTA KWO: A weakened beam is under stress.\nTo move in any manner spells success.\n\n\nPlace mats for things set down; then faults are few.\nDead willow shoots; old man young wife well wooing.\nThe beam is weak; fate’s busy with the brewing!\nThe beam curves up — loyalty did the glueing.\nDead willow flowers; old wife young men pursuing!\nBold wader, thine head’s wet — but thou wast true! ', 32: '䷫ \n\n\nKAU: Suddenly encountering — behold\na woman — do not wed her? who is bold.\n\n\nRestrain weak folly — or woo melancholy!\nHere’s fish — but ask not fishy folk to dine!\nDefeated, yes; but not at meat with swine!\nNo fish — because thou hast mixed with thieves, in fine\nconceal thy virtues — cellars ripen wine!', 33: '䷗ \n\n\nFU: Coming back; thou’rt free to come and go.\nFriends help; now move with confidence aglow\n\n\nCorrect small blunders — look for lucky wonders!\nHast erred? Return and take the proper way.\nReturn, return; and go no more astray!\nReturn though all thy comrades say thee nay.\nNobly return — the master of thy day!\nBut error piled on error — deuce to pay! ', 34: '䷚ \n\n\nI: Nourishment; the matter and the mode,\ndemand that thought should indicate the road.\n\n\nSuffice thyself; else — how thy jaw shall quiver!\nLook neither down nor up, the sages say.\nIll nourished, action merely means affray.\nBut lo! Below thee bleats the tiger’s prey.\nImproper method? Firm and cautious stay!\nBut thou, who nurturest all, mayst cross the river. ',
+    35: '䷂ \n\n\nCHUN: Firm, correct; great progress this evinces\nand vantage from appointing feudal princes.\n\n\nHard mere advance, maintain thy place correct.\nDistress, retreat; fear not, a friend is nigh.\nLost in the wood, seek not a deer to espy.\nRetreating, seek thy mate; with him, aim high.\nDispense rich favors as thy friends expect.\nThine house bolt; bleed tears of agony! ', 36: '䷩ \n\n\nYI: Increase; now’s no time to sit and shiver;\nbut to move on, even to cross the river.\n\n\nSuccess excuses boldness; face thy fate!\nGood omens and true virtue joined, essay!\nIll leads to well, for him who leads the way;\nEven the capital remove he may.\nLet all men share in thine approved estate!\nBy soul\'s disorders realms disintegrate. ', 37: '䷲ \n\n\nCHEN: Fire! Beware, but smile with mein divine!\nLet nothing scare thee into spilling wine!\n\n\nHere’s trouble; watch thy ways, but drink thy wine!\nTake lofty ground; the tide will ebb and flow.\nDistraught? May danger teach thee low to go!\nFight fire with fire, or sink in mud supine!\nTroubles mean profits for the men who know.\nCaution! Foresee the action of the foe! ', 38: '䷔ \n\n\nSHIH HO: Unite by gnawing; here success\ncomes by the proper use of legal stress.\n\n\nNip crime in the bud; lop toes, put feet in stocks;\nElse — flesh and nose must next be bitten through.\nQuick, or dried flesh gives double work to do!\nGnaw, gnaw, fake pledges ere the gate unlocks.\nGnaw: gold rewards precaution firm and true.\nOr, last, the Gangue — the ears cut off, fate mocks. ', 39: '䷐  SUI: Follow after; but in following checked\nby being firm, unwavering and correct.\n\n\nChanging pursuit, seek friends beyond thy gate.\nShould one leave old, and follow a young boy?\nWiselier leave youth, and age’s wit employ.\nAdherents hurt; make sure thy way is straight.\nFollow all excellence with eager gait.\nThe sincere king may sacrifice with joy. ', 40: '䷘ \n\n\nWU WANG: Sincerity and prudence; splendid\nif in these matters thou hast not offended.\n\n\nFree from all insincerity, press on!\nGood going, if thou reap with never a plough!\nYet — innocence oft bears guilt’s branded brow.\nFirmness, correctness; these bid woe begone.\nThe good man sick? He needs no doctor-don.\nTime’s come when silence’s book is best to con. ', 41: '䷣ \n\n\nMING: Intelligence sore hurt; reflect\non the position rigidly correct.\n\n\nHurt? Droop thy wings and fast, while critics leaguer.\nA horse may save one wounded in the thigh.\nThy great foe taken, be thou not over eager!\nEscape from night by mind’s propriety.\nThink how the court of Ki met destiny.\nAt last earth swallows him that trod the sky. ', 42: '䷕ \n\n\nPI: Ornament, should have free course indeed.\nBut — in its place: it shall not take the lead.\n\n\nAdorn thy feet, and have no need of horses.\nAdorn thy beard, for dignity is due.\nAdorn, seek firm correctness in thy courses!\nHorsed, winged, desire the honest and true!\nThough poor, suburban, there’s good work to do.\nClad in pure white, simplicity thy force is. ', 43: '䷾ \n\n\nKI ZI: Perfected work. Perfection borders\nclose to the frontiers of new disorders.\n\n\nMaintain success; be history’s lessons heeded!\nAlarmed, be not distracted or unsteady;\nPut to each enterprise the full force needed!\nTo stop the first leak, vigilant and ready.\nSmall works wrought wisely are most surely speeded!\nRash violence drowns in dark disaster’s eddy. ', 44: '䷤ \n\n\nKIA ZAN: The household: This right rule’s its base!\nThe wife be firm, correct, in her own place.\n\n\nFirst, proper law’s the necessary thing.\nHouse keeper, keep the house with modesty!\nBe stern for idleness and chattering.\nThus fortune helps enrich the family.\nAll share the luck of the high handed king.\nSincere, majestic, the end’s glittering. ', 45: '䷶ \n\n\nFANG: Large, abundant; now care’s night is done.\nShed forth thy glory as the noonday sun.\n\n\nFirst meet thy mate, then multiply thy force.\nBe humbly loyal in obscurity;\nLet not its accidents disturb thy course.\nMated in darkness — men! ’Tis fortune’s source.\nThen, call the clansmen of ability!\nBut pride and insolence slay majesty. ',
+    46: '䷝ \n\n\nLI: Sun; attachment. Be thy way docile\nas well as firm — then see good fortune smile.\n\n\nConfused at start? Let reverence befriend.\nHere’s fortune — rightly placed and clothed in yellow.\nAccept thy ills with cheer or worse attend.\nAbruptness — fie! Thus fire and death descend.\nLuck comes to aid thee, melancholy fellow!\nIn victory be just — a noble end. ', 47: '䷰ \n\n\nKO: Change; men doubt until their dullness sees\nthe change wisdom can foretell with ease.\n\n\nAt first; though art bound with strips of yellow hide.\nWait then a little, time’s a friend to thee.\nHaste may wreck all; discuss thy plans untried.\nFirst gain men’s confidence; then saddle and ride!\nSwift as a tiger — with the Yi for a guide!\nConfirm thy change with firm sincerity. ', 48: '䷍ \n\n\nTA YU: Great havings; wealth’s a sorceress,\nwithin whose cauldron bubbles up success.\n\n\nSteer clear of wrong, envision clear thy road.\nLo! The great wagon with its golden load!\nGreat prince to heaven’s son his duty hath showed.\nBut guard resources as his jewel a toad.\nsincerity is matched by majesty.\nIn all ways heaven’s blessing hath overflowed! ', 49: '䷒ \n\n\nLIN: Great; here’s progress and success to firm\ncorrectness; but — more trouble at the term!\n\n\nNow with thy comrade firmly force the pace!\nAdvance with him — alliance wins the race.\nBe cautious, or advance may lead thee astray.\nGo forward only in the noblest way.\nGreat rulers need great wisdom every day.\nHonest, magnanimous, woo fortune’s ray. ', 50: '䷨ \n\n\nSUN: Diminution; be sincere; the price\nis not the measure of the sacrifice.\n\n\nLeave business to help friends, but yet be wary!\nGuard against action; of the cash be chary!\nThree walk, one’s gone; one walks, and meets a two.\nBy friendship one finds woes becoming few.\nHere’s tortoise shells from the chosen few.\nPrudent though kind well served by friends o’dignitary. ', 51: '䷻ \n\n\nKIEH: Regulations: measured steps, but fear\nimpermanent results if too severe!\nThere is a time when wisdom urges rest.\nAnother when the bird should leave his nest.\nObserve no rules? Lament; the blame’s to thee.\nAttend them quietly — success flows free.\nEnact right laws — be tactful with decree,\nfor men are vexed when harshly pressed.\n\n\nor\n\n\nKIEH: Regulations. Who can do without them?\nBut not too many, lest men come to flout them!\n\n\nQuit not thine house to meddle with the state;\nBut set good order still within thy gate.\nThou mayest lament if thou should’st disobey.\nBut keep the law and go thy peaceful way.\nEnact thy laws ’ suave, tactful, moderate;\nBut vex not men with harshness overweigh! ', 52: '䷼ \n\n\nKUNG FU: Supreme sincerity; thy wish fulfilled.\nFor this moves even pigs and fish.\n\n\nTrust thou thyself, repose in thine own sphere.\nBut welcome and reciprocate good cheer.\nA mate involves vicissitudes that vary;\nHe travels fast who travels solitary!\nMen are most loyal to men most sincere;\nBut failure’s for sky-soaring chanticleer! ', 53: '䷵ \n\n\nKWEI MEI: To give first younger daughters — ill course.\nDon’t start with the carriage in front of the horse.\n\n\nGo to it, ye cripples! I’ll hold your crutches.\nBlind of one eye? Be as chaste as a dutchess!\nNow, younger sisters there’s scrubbing to do!\nBetter postpone matrimonial clutches!\nThink of Ti-Yi and his sisters anew!\nNo meat on the chops, and no beans in the stew. ', 54: '䷥ \n\n\nKHWEI: All’s disunion, mother of distress;\nBut in small matters there may be success.\n\n\nLost steeds return; bad men may yet take thy way;\nThy lord may chance to meet thee — in the byway.\nBaffled and punished? Bide time’s amnesty.\nAlone and disunion? Friends on highway\nJoined with thy minister thy course is free.\nPigs? Ghosts? Foes? Nay! Go forward on the skyway', 55: '䷹ \n\n\nTUI: Still waters may run deep and free;\nMistake not slackness for philosophy!\n\n\nAppease thyself, harmonious in thy sphere!\nSingle thy will, most utterly sincere!\nTurn not aside when siren pleasures woo!\nSearch thyself well to make thy purpose clear.\nToo trustful customers may buy too dear.\n’Tis pleasant to be captain of thy crew! ', 56: '䷉ \n\n\nLI: Is the treading of the path that’s right!\nStep on the tiger’s tail; he will not bite.\n\n\nFollow the path of thine accustomed right;\nLevel and easy walks the anchorite.\nLearn vanity, the brave’s bluff, to flee!\nTread on the tiger’s tail; he will not bite.\nFirm, resolute — yet perilous thy plight;\nExamine well, the augury of the flight. ',
+    57: '䷊ \n\n\nTHAI: The due order of things; we see, in sum,\ngood fortune, small things gone, and great things come.\n\n\nPull up one stalk; and others follow it.\nSeek patience, self reliance, love and wit.\nThough all things change, rejoice; for that is writ.\nCall friends to help thee, they may bring thee through.\nRemember what Ti Yi thought right and true.\nThe city’s fallen; there\'s little thou canst do. ', 58: '䷙ \n\n\nTA KHU: The great accumulation; quit\nthy private virtue when state needeth it.\n\n\nPeril; move not, but look within thine heart.\nThen, with due care, be ready for the start.\nNow, with good horse, well trained, play hard thy part!\nBlock even the young bull’s horns! He’s safer so.\nCastrate the boar — its teeth will gently show.\nThen rule the stars — good fortune aid thine art! ', 59: '䷄ \n\n\nHSU: Patience; be sincere; success will gleam\nFirmness brings fortune, thou mayest cross the stream.\nWait, constant, in the border of the land.\nWait, slandered, by the mountain torrents sand.\nAh! Shun its mud, or mischief is at hand.\nStill wait, midst blood. Forth from cavern hie!\nStill wait, at festival — Oh firmly stand.\nThree guests come helping; greet them courteously. ', 60: '䷈ \n\n\nHSIAO CHU: Shows small restraint. Hence quick success.\nBut clouds indeed, we ask rain’s happiness.\n\n\nStrayed — Come thou back and follow thy own plan!\nBy true attraction mete thy starry span!\nAnger in wedlock or a car en panne!\nBloodshed and woe sincerity bids go.\nSincerity: Here’s help from all the clan.\nWho wins too much may lose! Repose, O man! ', 61: '䷡ \n\n\nTA KWANG: Great strength. Be firm and self-reliant;\nBut — tyrannous to use it like a giant!\n\n\nPlant firm thy feet, but dare not yet to move!\nThy firm correctness exercise and prove.\nFences entangle rams who blindly shove.\nStrength fails to force some gates that yield to love.\nThine purpose gained, relax — nor tax thine heart so;\nOnce tangled, the best chance is — to know thou art so! ', 63: '䷪ \n\n\nKWAI: Cutting off; displeasure; front thy foe;but show reluctance due in acting so.\n\n\nLay well thy plans before the march begins.\nSeek loyal friends and have no fear of gins.\nFight on alone; persistant courage wins!\nDefeated, acquiesce — smiles conquer grins.\nUproot small men like purslane — tan their skins;\nCut off is he — and evil his end be! ', 64: '䷀ \n\n\nKHIEN: Originating from the term,\npiercing advantageous, right and firm. \n\n\nThe dragon lurks: it is no time to act.\nThe dragon’s in the field: now make thy pact.\nBe active, watchful, using care and tact.\nThe dragon leaps; a bursting cataract.\nThe dragon ploughs the sky with pace exact.\nExceed not, dragon, lest thy force react.\n\n(If all this heavenly host of dragons lacked\nTheir heads, good fortune would become a fact.) '
+}
+
 			$(".cards").hide();
 			
-			openingKeySpread()
+			
 //ss
 			//have to think about this
 			function openingKeySpread(){
@@ -41,6 +95,18 @@
 			}
 
 
+			function iching(cb){
+				$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8&size=6", function(data){
+					var data = data.data[0];
+					
+					if(data <= 63){						
+						cb(null, data + 1);
+					}
+					else{
+						iching(cb);
+					}
+				})
+			}
 
 			function getData(arrDigits, cb){
 				$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8&size=6", function(data){
@@ -60,10 +126,79 @@
 		
 	</script>
 	<style>	
+		/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+	h1{
+		font-size: 26px;
+	}
+	h2{
+		font-size: 18px;
+	}
+
+	.intro span{
+		padding: 26px;
+	}
+
 		.data{ 
-			font-size: 3px;
+			font-size: 4px;
 			width: 100%;
 			height: 100%;
+		}
+
+		.front_ul li{
+			padding: 15px;
+			float: left;
+		}
+
+		body{
+			overflow-y: hidden;
 		}
 
 		.key{
