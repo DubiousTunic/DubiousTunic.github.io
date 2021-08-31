@@ -1,0 +1,32 @@
+<head>
+	<script src="jquery-1.12.4.min.js"></script>
+	<script src="client.js"></script>
+</head>
+<ul>
+	<li><a class="anch_link tree_frog" rel="?param1=x" href="#tree_frog">Tree Frog</a></li>
+	<li><a class="anch_link bull_frog" rel="?param1=x&param2=y" href="#bull_frog">Bull Frog</a></li>
+	<li><a class="anch_link poison_dart_frog" rel="" href="#poison_dart_frog">Poison Dart Frog</a></li>
+	<li><a class="anch_link pepe_the_frog" rel="" href="#pepe_the_frog">Pepe the Frog</a></li>
+</ul>
+
+<div id="wrapper">
+	<!--Here is a list of the "partials" i.e. each Page 
+		Name the class of the partial "partial" and also the same name as the a element above (e.g. bull_frog, &etc.) !-->
+	<div class="tree_frog partial">
+		Tree Frog 
+	</div>
+	<div class="bull_frog partial">
+		Bull Frog
+	</div>
+	<div class="poison_dart_frog partial">
+		Poison Dart Frog
+	</div>
+	<div class="pepe_the_frog partial">
+		Pepe the Frog
+	</div>
+</div>
+
+<script>
+	//example, this could be changed from a server or client 
+	$(".poison_dart_frog").attr("rel", "?param1=a&param2=b&param3=c")	
+</script>
