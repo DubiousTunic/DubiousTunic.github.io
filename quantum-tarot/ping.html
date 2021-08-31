@@ -26,6 +26,9 @@
 		</pre>
 	</div>
 	<div class="iching">
+		<div class="iching_data">
+
+		</div>
 	</div>
 	
 
@@ -41,6 +44,7 @@
 			$("#draw_tarot").click(function(e){
 				$(".intro").hide();
 				$(".iching").hide();
+				$(".key").empty();
 				$(".tarot").show();
 				e.preventDefault();
 				$(".quantum-shift").text("Draw Tarot");
@@ -50,11 +54,12 @@
 			$("#draw_iching").click(function(e){
 				$(".intro").hide()
 				$(".tarot").hide();
+				$(".iching_data").empty();
 				$(".iching").show();
 				e.preventDefault();
 				$(".quantum-shift").text("Draw IChing");
 				iching(function(err, data){
-					$(".iching").append(HEXAGRAMS[data]);
+					$(".iching_data").append(HEXAGRAMS[data]);
 				});
 			})
 
@@ -85,8 +90,11 @@
 						getData(arrDigits, function(err, data){
 							arrDigits.push(data);
 							$("#" + arrDigits[0]).appendTo($("#key_2"));
+							$("#key_2").append("<span class='title'>" + $("#" + arrDigits[0]).attr("class") + "</class>");
 							$("#" + arrDigits[1]).appendTo($("#key_1"));
+							$("#key_1").append("<span class='title'>" + $("#" + arrDigits[1]).attr("class") + "</class>");
 							$("#" + arrDigits[2]).appendTo($("#key_3"));
+							$("#key_3").append("<span class='title'>" + $("#" + arrDigits[2]).attr("class") + "</class>");
 						});
 					});
 				});
@@ -184,12 +192,18 @@ table {
 		padding: 26px;
 	}
 
+
+
 		.data{ 
 			font-size: 4px;
 			width: 100%;
 			height: 100%;
 		}
-
+		
+		.title{
+			font-size: 13px;
+		}
+		
 		.front_ul li{
 			padding: 15px;
 			float: left;
@@ -205,7 +219,7 @@ table {
 		}
 	</style>
 	<div class="cards">
-	<div id="0">
+	<div id="0" class="The Fool">
 1
 t                                          . ..  tttttttttt @             t
 t                                  :t:               :ttt11tt .           t
@@ -272,9 +286,8 @@ t      tttC C ;@  tt ;t t         @t  C ;C  C; ;C   C  tt                 t
 t        tt   t@: tt t@t;         GGt   @.  ;@ tt   tt.tf  ;              t
 t        ;:   ;@: tC;;CtC:       :Ct;    tttt    ttt   tttt     ;         t
 t;tttt  tt  tttttttttttttttttttttttttttttttttttttt@@GtttGtttttttttttttttttt
-The Fool
 	</div>
-	<div id="1">
+	<div id="1" class="The Magus">
 1
 tt;C@t8; t1CtCtttt;CttCCCCtCCt;   tttt   ttCCtC;:t;C@CttC@8t;t8:C;t@CGtCC:C
 @CCCCt@@C@CttG;G;:CG:t; CG   t;     @..   G ;; ;;tt ;  G.;: G@@;GC8CGCtt;tt
@@ -341,9 +354,8 @@ CC@@C8C@tCt8C888CC8C8;G@fftfCtG@G;ttG.;;t.fG.CtG.@Gt.ttft;t.ttt:..C .tG;ttG
         @  tt tttt     t ttt@. t C;t@;tt @ t;    @  t:@  t @G             .
                                                             t  :          t
 tttttttttttttttttttttttttttttttttttttttttttt;;.    tttttttttttttttttttttttt
-The Magus
 	</div>
-	<div id = "2">
+	<div id = "2" class="The High Priestess">
 1
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@t   . tt @          C                      .  
 @@@@@@@@@@@@@@@@@@@@@@@@@;t@Gt     Ct G         t                          
@@ -410,9 +422,8 @@ Gf;tt1081tttttff@@@1:;  .  ;: : .i:G.;.t.   ; L:fC;t,..C  .C 1:  tt;;.;;;:t
  t   t tt @ ;   t  @ tttG;Ct @  t   @   tt C  @ tt  .;..@  tt  t ;.; .t. t@
                                                                           t
                                                                           ;
-The High Priestess
 	</div>
-	<div id = "3">
+	<div id = "3" class="The Empress">
 1
 t                                                                          
 @                                   t t t                                  
@@ -479,9 +490,8 @@ t@GtG@CtGt@;Gt.ttGt@ft;.C;tt 8t;tt@tttCG@ttt@ttftttt;C tt@tttftCtt: ttt;C;f
        tt   tt  Ct t;t.      @tt . G.CC tt t@    tt;t .@ t   . Ct . tt    t
        @@;  t;  Ct Ct;:     ;ttt: ;C:  :Ct tt;   t;  t t;:::tttt tttt tt  t
 t@@@@@@@C@ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttG
-The Empress
 	</div>
-	<div id="4">
+	<div id="4" class="The Emperor">
 1
 t                               tt;;Ct;tt;                                t
 t                               .@  t;:t                                  t
@@ -548,9 +558,8 @@ t      .                                         ..                       t
        @   tCttC: @t       Ct;   t:t t; @tt .ttt   ttC. t    @  C.C       t
        @   tt  t; @  t     @  t ;t   tt @;   tttt  G; ;C ttCt   C  C  t   t
  ;                                  ;  ;     ;;.:;;ttt; ;       ;;     ;: t
- The Emperor
 	</div>
-	<div id="5">
+	<div id="5" class="The Hierophant">
 1
 ttttttttt  tttttt ;t  @           tttttt;;           tt    ; tt  tttt ;t: ;
 C ttttttt .1;tttf;;t  @             ;t.G             t t   t tt  .ttt;  ttt
@@ -617,9 +626,8 @@ C8@GGC.  ;G;:t;Ctt.ttGttt         :1t  ;t;.    .:...;CC;.@C@t;fCtCttftC; .t
    tt  tC .tt tt;    tt  tt C. @tt. tCCt @t  tt Ct;  @tttt ;;;t t C;t  tt t
    tt  tC  t; GCtt   Ct  tt Ct @ttC tt ;G Ct :  t    @  tt C  t;C  Ct  tt t
                                                                           t
-The Hierophant
 	</div>
-	<div id="6">
+	<div id="6" class="The Lovers">
 1
 t   ttt ;ttt;. t                ;ttttttt                  C; .      tttttt@
 t     :ttttt;. t                 ttt;tt                  tttt:  . .;tttt1tt
@@ -686,9 +694,8 @@ t;tt......tt....t.t.;ftt@t@CtttttC88tttttttttt;   11111t1111tt111111111111C
         @   .@   t tt;;      tt   Gt  tC  Ct:  tt..  t.t  .;  @           t
 t      C@;   t:  C ;t t      :tt    tt     :   ttt                        t
 G                               ;;ttttttttttttttttttttttttttttttttt;t ;t;t;
-The Lovers
 	</div>
-	<div id= "7">
+	<div id= "7" class="The Chariot">
 1
 t                               tt ;;tttttt;                               
 t                                 t;t @ tt                                 
@@ -755,9 +762,8 @@ C@t@@G@@;.GC@GfG@@@@@@@; t;f8f@@@@; ;; : C :1ttf. 11;            C;;:;:; tC
       @t   @  t@ @   ;       8;    tt  @t t  tt @ ;t  tt @   t.  @t       t
                                                                           t
 ;  ;t ;tt;t:tttttttttttttttttttt ttt; ttttttttttttttttttttttttttttttttttttt
-The Chariot
 	</div>
-	<div id="8">
+	<div id="8" class="Fortress">
 1
 t..                       .                                               t
 t                                t @:;CC;C;                               t
@@ -824,9 +830,8 @@ GGGttt.................................................ff.f; ttt  tt;Ct ttC
           t tt@    @   t@ C  t ; . t:Cttt tt  tt   @  8                    
           ;ttt:   : :  ;t    ;                                             
                       ;;t t;ttttt;;;;;ttttttttttttttttttttttttttt;        t
-Fortress
 	</div>
-	<div id="9">	
+	<div id="9" class="The Hermit">	
 1
 t;                           .   ttttCC@@@t                               @
 t                                  @  t@;                                 @
@@ -893,9 +898,8 @@ C.;          . :   .      .GG...    :t11  ..    ;ttttttt18t.. .           @
 t             @t  Gt.tC.tt;         8 t@ 8t ; @t:G t CC @  @t  @t  ;      @
 t                                                                         @
 Gttttttttttttttttttttttttttttttttttttttttttttttttttttttt   ;ttttttttttttttt
-The Hermit
 	</div>
-	<div id="10">
+	<div id="10" class="The Wheel of Dharma">
 1
 t;       t      .;tCtt;.     t;  ;tttttt;       C .   ;C        tt  .;ttt;@
 t tt;t1  t :;;C@;;t tft       t     GC; ;;;  :tt               t: Ct;t;t  t
@@ -961,10 +965,9 @@ t                 .                  ...    .                   ...  ..   t
 t C  @  Ctt t t   t :tt        ;;    tt t G  :t @ Gt:tt  t  t  @@ t tt    t
 t  CC tC tt t tt; tt t;      .; t@   8t;  @  ;t C;t  tt  tt @  @ CC tt    t
 t   :  : t: t t  ;@;;:tt;     t; t   :t    :;   t  :::t   ;;              t
-t                             ;     ; ;tttttttttttttttttttttttt t         ;
-The Wheel of Dharma 
+t                             ;     ; ;tttttttttttttttttttttttt t         ; 
 	</div>
-	<div id = "11">
+	<div id = "11" class="Scales">
 1
 t ttt  :.;t1                    t  ; t .;                    tt.;       t t
 @ ftt     tt ..                   G@; @                     ;@       ;; t t
@@ -1031,9 +1034,8 @@ t           :tt@:t G  t   t@  t t tC C  @t  @C t  :@; t                   t
 t           ;; @   t; C  .;   Ct  tt    @t :@.     @.;..                  t
 t           :tt;    tt t; tt::;   ;t   ;tt   ttt: ;tttt     ;;            t
 t                                 ;    t:;;ttttttttttttt;tttttttt;;;tt: ;;t
-Scales
 	</div>
-	<div id="12">
+	<div id="12" class="The Hanged Man">
 1
 t  t;                              @G  t t                                 
 ;Cttt;:  CCt                    ;ttttttf;              :;CC         tGttC;G
@@ -1100,9 +1102,8 @@ t :tC ;t@  t @ :  t@ tt ;tC t@t ttGC   tt t @;;C    @G  G@  tC   @t t     C
 t  tt  tt .C;Ct   t@ tt tttttt:Ct @ ;t;tt;. @  tt  t ttt @ tttC  tCGt     t
 t  :t  ::  @;t ;  tt :t @  CCC; t  ttt:;tt: ttt   t;  t :t ;  :tCt ;t C   C
 t   tttttttttttttttt   ;ttt tt                   :ttttttttttttt       tttt;
-Hanged Man
 	</div>
-	<div id="13">
+	<div id="13" class="Death">
 1
 t    ..                      .t@@@@@@@@@@@@@@@@@@Gtttttt                  ;
 @                             ;@@@@;t@t@tt@@@@@@@@@@@@@@@@@@@@@@@t        t
@@ -1169,9 +1170,8 @@ t               t@: CG  G  ::   t Ct  t t@t t  t@   @t                    t
 t               t@   @  @tC    t; :@;   t@t    t@   @t                    t
 t              :tCt:t   @ttC: GC   C@;  t@C    t@; :tt   ::               t
 Gttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt  G
-Death
 	</div>
-	<div id="14">
+	<div id="14" class="Enchantment">
 1
 t                           :tttttttttt;                                   
 G                             Ct @.G;t                                     
@@ -1238,9 +1238,8 @@ ttttttttttttttttffft8tttttttt8tttttttttttttt8C888@888tC8CtttCtttttttttttCt@
        @   t@;    @ :;.C .@;    @ :  tt C  t;  C; ttt@C  C;.   tt..       t
       ;;;  ;;;        tt :;t         ;          ; t;                      t
 ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt;;tttttttttttt
-Enchantment
 	</div>
-	<div id="15">
+	<div id="15" class="The Devil">
 1
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@C ;:      C@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@C
 @@@@@@ tt@@@@@@@@@@@@@@@@@@@@@@@@; C@;;C@@@@@@@@@@@@@@@@@@@@@@@@@@@@@tt@@@t
@@ -1307,9 +1306,8 @@ t            @t   @..tt @.          @  C@ tt;: tC ;: tt  @               t
 t            @t   @  tt @           @  tC tt..  Gtt  tt  @               t 
 t                     ;                   ;:t;  ;t;  :t :ttt     t       t 
 tttttttttttttttttttttttttttttttttttttttC@tttttCtttttC@@@@@@CttttGGtttCtGt@ 
-The Devil
 	</div>
-<div id="16">
+<div id="16" class="The Tower">
 1
 @@@@@@@@@@@@@@@@@Ct .. t:.;@@@@t   .  ...      C@@@@@@@@@@@@@@@@@@@@@  t@t 
 @@@@@@@@@@@@@@t t:t;tt;      t@   Ct  C C t     G@@@@@@@tt@@@@@@@@@@@; t@@t
@@ -1376,9 +1374,8 @@ f .  .         tt CCt1Ct@ @ Ct@ tt.8tt@@  tt@  tt G@ 8;t8t8@@@@@@@@@@@@@@@@
           @    @Ctt@t Gtt .       tt   t@ .@t  @C .8t  tG:.  8:G          t
           @;   Gt  tt @CtC        CG    tttt   ;@;;C   GCCt: t  :t  t     t
 t                                                                         t
-The Tower
 </div>
-<div id="17">
+<div id="17" class="The Tower">
 1
 t                                tt; t ;:@ tt                             t
 t                               ;CGCt @Ct@tCCt                            t
@@ -1445,9 +1442,8 @@ t           @   tt  tt @t          @      tt   ;;;t   t;tt                t
 t           @   t;ttCt @tt         .. t.  tt   t  8  tt  C                t
 t          ;@;  Ct  tG @tt        tttt:   tt  :                           t
 t                             ; t;tttttttttttttttttttttttttttttt;   ;;   :;
-The Star
 	</div>
-	<div id="18">
+	<div id="18" class="The Moon">
 1
 t                                CC;t.t.tttC     .t                       t
 t                               ;Ct; @t @tt@     ;;                        
@@ -1514,9 +1510,8 @@ Ct  ..;:..t ;:.t;;;.;t:   .:C;.ff8f;8CCC;ttC .       ;.      ..    :;tt;;:;
 t        @    tt  tt.ttC       t;C ttt:@   t@ @t  t@ t Ct t                
 t        @    @;  tt G; t;     C  t tt ;C;;C   tttt  t;  Ct   @            
 t                                                                          
-The Moon
 	</div>
-	<div id="19">
+	<div id="19" class="The Sun">
 1
 t.;;  ;      ;;. .   t.. t   ;   tt .8  Gt.. .tt   ;     ;:;;   t         t
 t    t:   t      ;;  t    :  ;; ;; ftf.f  ttC.t  .;    ;        t   .:  t;;
@@ -1583,9 +1578,8 @@ t        Ctt@:ttt@: tt  @;;t      @ :C tt  C   tt  C                      t
             @    @ttCt  Ctt       :t:;.tt .t   ; 8 t                      t
            ;@   ;@; Gt ;@ttt     Cttt:  t:: t  t  :;      ;t              t
 t                                                                         t
-The Sun
 	</div>
-	<div id="20">
+	<div id="20" class="Judgment">
 1
 t                               tCt@;tttt                  tCCCtt        t 
      tt :tt  ;tt                .CfC.;CG:                C      tt;t@8;  t 
@@ -1652,9 +1646,8 @@ t          t@ ;:t  t   tt  @ ;@  :  t;;   C@; C@t @ ;:  tC@; @   tt :     C
 G .      t;G@   G. t   t@..@;tt ;Gt tt    t :C.t  @   t .t C@@   tt  .    @
 t        :tt    :t: t  ;ttt   ;ttt: tttt  t    t;:tt    tt                @
 G                         ; ;; ttttt;ttttttttttttttttttttttttttttttttttttt@
-Judgment
 	</div>
-	<div id="21">
+	<div id="21" class="The Cosmos">
 1
 t   t;tt  t        ;;;..     .   tt ;;; t          ;C .  .;.; ;;;:;;. :   t
 t:t        t ;                  t;C G;; t         t t    .;   ...;;;;;t    
@@ -1721,10 +1714,9 @@ Gt.;  :81tt..;;;.C;;1t  t          ;C;;;;t.. .;:;.. ttf. .:CC8tt@@t18C@L;tG
           tt   tt .tt tCC           @@  ;C  tt   @ t@.C;  t@ . tt t@      t
           ;;   ;C  t: ;ttt:          tt:tt    tt   ;t   :; tt; ttt    ;;  t
                                      ttttttttttttttttttttttttttttttttt; : t
-The Cosmos
 	</div>
 	<!--END TRUMPS !-->
-	<div id="22">
+	<div id="22" class="Ace of Cups">
 1
 t .                 .       C                  ;t                          
 t                           Gt.                tt                          
@@ -1791,9 +1783,8 @@ Ct88GC1 t  : 1;Ct...t;CCCt..Ctttt888t;t88tGCtCCt...CCttt;8Ctttt@G ttttCtCGG
       ;; t@ t@     @ ;.       C;G   t8     t@  tt  @t .  ;..;@t            
      tt  t@  :ttt tC  :     :;:tt    :CC :  ;@@:   t;   :tttt:  ;;         
 tttttttttttttttttttttttttttttttGttttttttttttttttttttttttttttttttttttttttttG
-Ace of Cups
 	</div>
-	<div id="23">
+	<div id="23" class="Two of Cups">
 1
 t .                                 ;ttttt                                 
 t                                    t tt .                                
@@ -1860,10 +1851,8 @@ i.......f@@  t     ;t tC8GG.....................ii;ffftt;@: .GtG   1G;t  ;t
                                                                      t.   t
                                                                           t
                                                                           t
-Two of Cups
- 
 	</div>
-	<div id="24">
+	<div id="24" class="Three of Cups">
 1
 t                                 tCtGGGt;.                                
 t                                  t tttt                                  
@@ -1930,10 +1919,9 @@ t                                ...  .tt; Gt@tG@G@;@;@t ;.  G @G@; CCG@;;t
                         ..;; C @@t@CtC8@:CC;;tCtttC8t8@;.;CCtt;tt ttCt;;@; 
                                            :CC         CC@:Cttt      :CC   
 ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-Three of Cups
 	</div>
 	<!--FOUR OF CUPS!-->
-	<div id="25">
+	<div id="25" class="Four of Cups">
 1
 t             G GtCC   @G .   tG;        t  C@@@t.tt@CtCt ;C ;CC t@;@    :@
 t             tttCt;t .tGt@t;CCC ;tG.t   tG; @;tt:@t:@@G;t@t:  Gt8;@;:1   @
@@ -2000,9 +1988,8 @@ tC   ttt @;@@tt @tttt ; ;@  :1t  G: t Gtt;@;   :         .  t    Ct@CCt8t @
 @Cttt;8;tt@; ..C@ttttCCt@CC ;ttt;Ct;;t@ CtGCt   ;.ttC. tt.t;C;;t   C; ;  tt
 t..ttt@@;  t@t:t:  t@Ct    @t@C@tt@   ;t;; ;  tt@;      ;t     :   t:     t
 @C@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@t@@@@@@@@@@@@@@@@@@@@@@@@@@@@t@C@
-Four of Cups
 	</div>
-	<div id="26">
+	<div id="26" class="Five of Cups">
 1
 t                                                                         t
                                    Ct @;                                  t
@@ -2069,9 +2056,8 @@ tC@tG   tC; ;Ct@@t     tCGt@         ;t   .   : @@@           t t;:@      t
 @@t t   @t tGC  .tt.;.  .  ;          tt8CC888CC;            t  C .;C     t
      t  tGGt :tG     ;ttttt                                C;   t:t: C    t
       CCG .;tC@tt     . ;tttt                        :ttttttt@CCCtt@CtttttG
-Five of Cups
 	</div>
-	<div id="27">
+	<div id="27" class="Six of Cups">
 1
 G                 .                .                                       
 t .                               ;Ctt @t                                  
@@ -2138,9 +2124,8 @@ t      tttt tG; ..   . ;ftt  t   ;.      ; t;C :t  ;         ..t;t ;t t :;t
 t   . .Gtt  .@ ;tttttt;t;:@; t  ;.;C;. t;;t;;1.;;t  ;         t ;t ;t.:   ;
 ;     G;;G   ;t;      ;;; t;  C : ;;G;@; ;;  ;  tt;  .        t; C  ttttttC
 ttttttttttttttttt;tt :t;tt;ttttt;;;ttttttttttttttttttCtCC@tCtCttCCC@CtCtttC
-Six of Cups
 	</div>
-	<div id="28">
+	<div id="28" class="Seven of Cups">
 1
 t                                tttttttt;           t;..;;;.;t;;  .      G
 t                                8.@ @ @t           : @@@;t@t; GG@@@@;    t
@@ -2207,10 +2192,9 @@ t      t@@@@@@@@@@@@@@@@@@@@@                                      : tt   @
 @    . C@@@@@@@@@@@@@@@@@@@@@G                                        t   G
 t      t@@@@@@@@@@@@@@@@@@@@@@;                                      t:   C
 @@t@@@@@@@@@@@@@@@@@@@@@@@@@@@@tttttttttC@@tCtCCttttGtttttttttttttttttttttC
-Seven of Cups
 	</div>
 	<!-- eight of cups !-->
-	<div id="29">
+	<div id="29" class="Eight of Cups">
 1
 @                                                                         t
 @                              C@;;@C@@GG;                                t
@@ -2277,9 +2261,8 @@ t     C.;GGCC      C 1C@@@C      :C :.@@@:     tt  ;tCt     t;   8t@ ;tC: t
      Ct.CttCt      C.ttt;C       @tt;ttG;      @C tt.tt     tG tttt. t;   t
 t   Gt;;:ttt;t    C t ttt;G     C;t CttGC;    Gtt ttttCt   CG     ;G      t
 t ;Ctt       tC ;CtG    t;;@tttCCCttCCCCC@Ctt@@Gtttt@C@@ttttttttttttCC@@C@@
-Eight of Cups
 	</div>
-	<div id="30">
+	<div id="30" class="Nine of Cups">
 1
 t                                                                          
 t                               tCCtG@@t                                   
@@ -2345,11 +2328,9 @@ t                                                                 t t ;
 t                                                                   t      
 t                                                                   @      
 t                                                                          
-t        :t;                                                              t
-Nine of Cups
- 
+t        :t;                                                               
 	</div>
-	<div id="31">
+	<div id="31" class="10 of Cups">
 1
 t                                 ;@ttC;                                 .t
 t                                   tC                                    t
@@ -2416,9 +2397,8 @@ t                                                                  t:@ttt t
 t                                                                   .Ct.  t
 t                                                                    C    t
 Gtttttt       tttttt;t t   ttt;;:  ttt;t  ;   t;t;                        t
-10 of Cups
 	</div>
-	<div id="32">                                    
+	<div id="32" class="King of Cups">                                    
 1
 t                                                                          
                                                                            
@@ -2485,9 +2465,8 @@ t     t@ ;C  Ct @G :C; Ctt       ;        :;t  t  t  GtC; ;:t
 t      @CC,. tt @;8;t @t;t;    t;CC     ;t.. ..@  G  @tt  tt@;             
 t     ;t  tt :: t; :t  ttt:   ;t; t      :t;   ;t t;;@   tt ;;  t          
 t                                ;..               ;;        t ;t         ;
-King of Cups
 	</div>
-	<div id="33">
+	<div id="33" class="Knight of Cups">
 1
 @                                                                         t
 @                                                                        tt
@@ -2554,9 +2533,8 @@ tt                .                              .
  t tCt   .t.@;t tt:G;t;t@ tt tt   t;t@;   t     t;.@ tt  .  ;t             
  t tt  Ct tt :t :t ;tt::t  @ :t   t; t     :tC:  :t ::t  :;t :  t          
  t                                  ; .                                   ;
- Knight of Cups
 	</div>
-	<div id="34">
+	<div id="34" class="Page of Cups">
 1
 t                                                                          
 t                                                                          
@@ -2623,9 +2601,8 @@ t          ,0t  t;tCt              tL0@;0 fi,Ctt.tC     0,@               t
 .8:t CttC t  . ttt       ;Ct      @      t  t. tt:. ; G;                  :
 ;@  tt  tG CC@:ttG     CC:tt      ;@; :  CttC; Ct  CCtG;  C;               
 tttttttttttttt;  tttttttt;ttttttttttttt:    ;t  :;tttttttttt  ;       tttt:
-Page of Cups
 	</div>
-	<div id="35">
+	<div id="35" class="Queen of Cups">
 1
                                                                         . C
 ;                                                                         .
@@ -2692,10 +2669,9 @@ t .ttt@;tt  t t: ; @ t  @;      ;    ;C  @t @  t  tt @t t ;t              t
 t @:  t@tt  t tCt  @C   .tC;    CG   t;  .. C. C  tCtt;;;ttC              t
 t ;@ttG;;@;CC tt t @;;t;C ;t  Ct;t    t@tt  :Ct:C ;t  :tttC;  t;          t
 t     t; .                      t;      ;; tttttttttttttttttttttttttttttttG
-Queen of Cups
 	</div>
 	<!-- ACE OF PENTACLES !-->
-	<div id="36">
+	<div id="36" class="Ace of Pentacles">
 1
 @                                        ..                               t
 @                                                                         ;
@@ -2762,9 +2738,8 @@ t t @  @  :: t@;      .   tt.tt @    t@; t   tt   t tt Gt ::tt   @ ; tCt; t
 ;t; tt;@     t@. .   ;;C  tt    @.   ttCGt.  tt  t   @ @;   tt   @ ...;.ttt
 :t   t: ttt: :ttt; :t:tt  t:    tt;: ::  t   :: :;   :: t; :;; : Ctt::tt:CC
 tttttttttttttttttttttt@ttttttttttttttttttCCC@@@@@C@@@@CCttttttGttCCC@@@@@@@
-Ace of Pentacles
 	</div>
-	<div id="37">
+	<div id="37" class="Two of Pentacles">
 1
 G                                  ;tC@@@                                 @
 @                                    tt;                                  @
@@ -2831,9 +2806,8 @@ t                                                                   t.    @
 t                                                                   t     @
 t                                                                         @
 ;  tt      ;t     ;tt;           tttttt ;         ttttttt   tt:t:tttttttttt
-Two of Pentacles
 	</div>
-	<div id="38">
+	<div id="38" class="Three of Pentacles">
 1
 t     ;               ;Ct tt;t;t;t@C@t@tttC;tt;tCt  Cttt t  ;tC; .   .   t.
 t            C;  . ;G.:t;;t       @;@ @      ;t tC;tCt        ;;        tt 
@@ -2900,9 +2874,8 @@ tCt;tC tC @t                 ;;  ttt tt CC@@ .;t tfGCtC@@8C@@C@@@@:  t    t
 tt;    t; @t                       ;;;.... ;;ttG;tGGCCt8C;.tttt      t    t
        ;;t;                                   C; 8tGCC: t;tCG:t           t
         ; ; ;        ;tt;   ..;;t t; ;    ;G;C;;;;tt;t;Cttt;Gt; :  t      t
-Three of Pentacles
 	</div>
-	<div id="39">
+	<div id="39" class="Four of Pentacles">
 1
 @                                                                          
 t                                  @t G:t.                                 
@@ -2969,9 +2942,8 @@ LffGff.t;f :C8@818;t.ittf8Cf   t      f   :8;.fG:   tGCGi@@8Cft1L1L1tLfi@@@
                                                                      ;    t
                                                                           t
  :ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttC@C
- Four of Pentacles
 	</div>
-	<div id="40">
+	<div id="40" class="Five of Pentacles">
 1
 @;ttC@8;C@@ttGtt   t@ ttttt ;C;tC. C; t   C.@t  @.t; C8t  ;. C;t@CCC@CGtC @
 t Gt@CCCCC@CGG;  t t@.t@t;;   tttt: tC  C;C:;     @@ @@t  ;tt8tG@CCCGt@:CCt
@@ -3038,10 +3010,9 @@ t :8     .@.G;ft  t@@GC8ff . 8:t    .8tGCC;G8ttttt.
      ;ttt               tCt t:t: t:                                  tt   t
                         ;@@GtCC;;                                         t
                               ttttttttttttttttttttttttttttttttttttttttttttG
-Five of Pentacles
 	</div>
 	<!-- SIX OF PENTACLES !-->
-	<div id="41">
+	<div id="41" class="Six of Pentacles">
 1
 t                                 f; tttt.                                 
 t                                  ttt CCt;                                
@@ -3108,9 +3079,8 @@ t;C               @CGffCCLtCtC888GLGGff;Ctt1  . 8;::
    .;ttt;                                              ;Gt;          ;.   t
                                                         ;CCtCt;:ttt    ;  t
                                        ;    ttttttttttttttttttttttttC8Ct;;t
-Six of Pentacles
 	</div>
-	<div id="42">
+	<div id="42" class="Seven of Pentacles">
 1
 t                           ;tttttttt@@t                                  t
                               ;G;G  tt@                                   t
@@ -3177,9 +3147,8 @@ tt Ct.    .t@;   t     t; tt  ;@t@t       t   t:; :     ;; G;:  t tCC  1Gtt
 t  t@@@@C@88@;.tt    ;C;...;   .   ;t   ;C;.tCt; Ct     ;CC;C;  . tGG;ttt;t
 t;         @@@ttt@CC  tt ttt  ;t :t    G; t .     t;t ;t;t;t;@C@;tCCtttG: t
 t    ;;           tttt.  ..           t;CG;;tCttt;..tt;; .G;      ;t;.    t
-Seven of Pentacles
 	</div>
-	<div id="43">
+	<div id="43" class="Eight of Pentacles">
 	1
 t                                 .  ;;t;;                 ;CCGttttt@ttt ;8
 t                              t; t;.tt t .             C@t ..  t@C @ttt; t
@@ -3246,9 +3215,8 @@ t      ttt; t:  .;@@ttt@ftt ;@;             tG GtGt;tG@C;          t@;: tC@
 t            @t.;...  ;Ct    tt             1CCCCt8C;            . CGtt   t
 t              t@@@@Gtttttt@t                                     ;tttt:  t
 t                                                                        :G
-Eight of Pentacles
 	</div>
-	<div id="44">
+	<div id="44" class="Nine of Pentacles">
 1
 t                                ttttttt;                                  
 t                                 tt t@.                                   
@@ -3315,9 +3283,8 @@ t  t tt                    tt  t                                       @@@t
  .           t8;                                                    :CtGtGG
 ;  :t      t@Cttt            ;                                      .tt@t @
 ;                             ;                               ;  :ttt;;  tC
-Nine of Pentacles
 	</div>
-	<div id="45">
+	<div id="45" class="10 of Pentacles">
 1
 G                                  . ....                           .;;tt t
 t                                    tt                              ;@@@CC
@@ -3384,10 +3351,9 @@ t@@@@@Ct:  ;@8@@@G@@@@Cttt8C@CtC..;   .;8..tttCG@t;Gtt.;C       ..;tttttttt
 t G@@@C@;@C C.ttCCt8tCtC G   C@CCt@@@@@@@tt@;C;;;;8;G@t :.       t;tttttGtt
 tt@@@tG@@C:    CttCtG;t;:G;C@G@@@CCC;CC@@C@t@ @  t ;C:Ctt ;t     t Cttttttt
 @@@@@@C@@CC@@@@@@@@@@@@@CC@@@8@@@@G@@Ct@@@C@@t@ttCtC@@@@@GCtttt@@CCC@@@@ttt
-10 of Pentacles
 	</div>
 	<!-- KING OF PENTACLES !-->
-	<div id="46">
+	<div id="46" class="King of Pentacles">
 ;                                     
 1
 C                                                                          
@@ -3455,9 +3421,8 @@ tttC::@ @t :;tC  ;   :t   tt tCt:;  t@  t  tt   ; @ tG  1 ;@   tt;  Ctt   t
 ttt@; @ t;@tt@t;tt  ;;CtC .t   t.;  t;8;t  tt  t  ttt@     @   tt   ;..tt t
 @t;;@Ct t  ;; ;tt;  ;t G  ;C   tttt t  ;;  ;t tt  ;t;  ;  ;    t;; ;  :   @
 t;tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt;; ;: t
-King of Pentacles
 	</div>
-	<div id="47">
+	<div id="47" class="Knight of Pentacles">
 1
 t                                                                          
 t                                                                          
@@ -3524,9 +3489,8 @@ t:C ;  t; ;; t  ;t;;t ; ;t ;      ;t;t;t ;;t ;;;ttt;;t;      t;  .    t;  t
 t GC   @tt.t @t@.  ;@:C  @   .;;  t@:;;GC tC@ t  @  t @ tC.  tt  t;  Ctt  t
 t t :; @ :@t @ @CGtt@ @  t  t t;t  @   @ @ t;@t  @ t  tt;@   tt ;t;;;; ;@ t
 t                                                                         t
-Knight of Pentacles
 	</div>
-	<div id="48">
+	<div id="48" class="Page of Pentacles">
 		1
 t                                                             .           t
 t                                                                         t
@@ -3594,9 +3558,8 @@ tCC  t ;@t@ ;..@C    ;ttC@;    @t;.ttt. @;@tt  @  tCtG tG   t@   @@t  ;@t t
 tt: tC  :C t t;@ t    t; @     C:  :t;t @  t   t: :  :: :tt ;ttt;t:t t;t:@G
 t
 tttttttttt ;   ;ttttt  t      ;ttttttttttttttttttttttttttttttttttttttttttG
-Page of Pentacles
 	</div>
-	<div id="49">
+	<div id="49" class="Queen of Pentacles">
 1
 tttG@;@:@;8;;@@@CCtCC@;;tttt;CCC     .;Ctt8t@;t;  ;tCt.;;;8;8tt;t;t  ; tG@C
 t@C @t;ttC@@f@@;@@@tC;t@@@ C@G@ ;8C@;. tG;C;CtttCt@@@ tC;CCCCC;;t.;CC8C.@G;
@@ -3663,9 +3626,8 @@ t:  C;tC tt  @ t:Ct t @@; C     ;  tG @:@t;:t@t t @tt ttt@ ;@:@t:t  tt  @ ;
 @;  :@t@  t  8 ; ttt  t C;C ..;t:@ttG . @;t.tttCC  tt .t Cttt . t@  ttt  t@
  ttt@  tt:tt t:t tttt t: :t   ;; ;t;t;  ttt:t: ::  :t:t: :t ;tt:;tt;:t   :C
 Gtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-Queen of Pentacles
 	</div>
-	<div id="50">
+	<div id="50" class="Ace of Swords">
 1
 t                                                                         t
 t                                    Ct;        :                         t
@@ -3733,9 +3695,8 @@ t.fGt.............;......;...f;ff.......f.ffffffffffffffffffftfffffff;GfGfG
 t@   C8t tttt  tttt:   ;t .C  tttttt   :Ct CC   :t;  :t: :t:tttt   :ttt; tC
 G
 ttttttttttttttttttttttttt@ttttttttttttttttttttttttttttttttttttttttttttttt@
-Ace of Swords
 	</div>
-	<div id="51">
+	<div id="51" class="Two of Swords">
 1
 ;                                tt.tttt;                                 t
 t                                 .@ tt                                   ;
@@ -3802,10 +3763,9 @@ ftttttttttttttttttttt;tG  . ;1   .   ;.      1  L ;  C11ii111iii1111iiiiiiC
                                                                           t
                                                                           t
                                            ;tttttttttttttttttttttttttttttt@
-Two of Swords
 	</div>
 	<!--Sword 03 !-->
-	<div id="52">
+	<div id="52" class="Three of Swords">
 1
 t                 G                .                                      t
 t                t                tttttt                                  t
@@ -3872,9 +3832,8 @@ t         ;            t                                          C       t
 t         t           t                                                   t
 t                                                                         t
 G;tt     t:    ttttttttttttttttttt;ttttttttttttttttttt@@@@@tt@@@@@@@@@@@@@C
-Three of Swords
 	</div>
-	<div id="53">
+	<div id="53" class="Four of Swords">
 	1
 @t@@@@@CC; C@@tGCGCttCC;t t   ttCtttt;tttt;                               t
 ttttt;C  @Ct@8ttt     G;; t   ttt @t G;t;                                 @
@@ -3942,9 +3901,8 @@ t                                                            t.t    :;tt:Gt
 t                                                               :   : ;: :C
 G
 ttttCtGttttCttCttttGGtttCtttt@@@@@@@@@@@tttttttttttttttttttttttttttttttttG
-Four of Swords
 	</div>
-	<div id="54">
+	<div id="54" class="Five of Swords">
 1
 t                               tCCtt@;         . ; . t.                  t
 t                                 ;;C          : .  t                    tt
@@ -4011,9 +3969,8 @@ t . t@@tttC;:C;;t;                   C:   :ttt                t    C;:    t
 t  t         ;;.tt ;t;        .;CCtt.    ..C;tt               tG     tt   t
 t                t;;t; tt     tttttttttttttC;Ct                 C      tt t
 t                   ;t;;;.;t;               t;tt                  ;t@C@tt t
-Five of Swords
 	</div>
-	<div id="55">
+	<div id="55" class="Six of Swords">
 1
 t                                ttttttttt                                t
                                   ;Gt; t                                  t
@@ -4080,9 +4037,8 @@ G;                      :Ct8@@@C@.tCtt    t@@tttttt   ;ttttttt  ;tt.  t; :G
 8t@;8Cttt..         .;t@C;8t;;t@Ct ...  ;;t@@Gt;     t;t; ttCttt:t   tttttt
 ;t@;GGtGGG@t@@Gtt@GGC@@GtC@@t    ;C@tt  tt;C@@   tt;         :t     :ttt: t
 ;tttttttttttttttttttttttttt@CC@C@C@@@@CCCttt@@CtttttGttttt tttttCtttttttttG
-Six of Swords
 	</div>
-	<div id = "56">
+	<div id = "56" class="Seven of Swords">
 1
 t                                                                         t
 t                               tttttttttttt:                             t
@@ -4150,9 +4106,8 @@ t                                                                         t
 t                                                                         t
 t
 @tCt;ttt;;:;; ;  ;;;ttttttttttttttttt@@tt@@@C@C@CtCCttttttttttttttt@@@Ctt;
-Seven of Swords
 	</div>
-	<div id="57">
+	<div id="57" class="Eight of Swords">
 1
 t .                      ..    ;CttG@t@GGt                                t
 t                                t;f ttt;                                 t
@@ -4219,9 +4174,8 @@ t:  t. t    ttttttt@ttttttt:  ;tttttt@;C@ttt tGt   :ttttttt. ;@tt@ ;@tt   t
 t..tGt t;tCC;ttC;  .;;;;ttttt.. .   .      t88@tCCtt@Ct ;88C@t      @     t
 t;;tt               . ..;tCtt  :tt;   ;CC ttttttt         CtGt   :Ctttttttt
 Ctt ;t  ;                       .  . .  tt                                t
-Eight of Swords
 	</div>
-	<div id="58">
+	<div id="58" class="Nine of Swords">
 1
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Ct::tt;Ct@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@t
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@tt@t;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@t
@@ -4288,9 +4242,8 @@ ttC t:;;tCi.ft8t@Ctt;.;;;;..tt t..G; .C@t 88C;G tt.t;ttt;;;:.,;; ttt@8:t;:t
 tttttttttttttt:ttt  ;;         tCCC8@8C@Gtt                               t
 G                                                                         t
 G .                   ;   ;;;tttttttttttttttttttttttt   ;; ;t;t;t;; t; ; tC
-Nine of Swords
 </div>
-	<div id="59">
+	<div id="59" class="Ten of Swords">
 1
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@t;t .@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -4357,10 +4310,9 @@ G f;..     1111ttC:     .;@Gt8G.tt8;;...tt ;Cfttt@:.       ;C1       .Ctt;
 G                                                                     @    
 @                                                                     t    
 @                                       tttttt   ttttttttttttttttttttttt@@t
-Ten of Swords
 	</div>
 	<!-- KING OF SWORDS !-->
-	<div id="60">
+	<div id="60" class="King of Swords">
 	1
 t                   .ttt;ttt;..tttt;Gt ;ttC;;..t G;;tC                     
 t               tC   t;;.f  :CCfGGCG@G8CGtGtGC  Gftttt.                    
@@ -4427,9 +4379,8 @@ t      @ ;C: t@ t@t t:;C @    ;;   CCttt@ t@;  C;t:G Ctt@ CCt;; tCt       t
 t      @C... t@;tt:tt @ ..   t;tC..:@@G tC;tG.Ct@. ttttC  tt  @;ttt;      ;
 t     ;@  tt;C@ CC :@ ;t@@  :t: C G@tC:  tt :C  CttC Ct Ct;t;C:@ttC: t    t
 ;   tttt    ttt;; ;t;ttttttttt ttttttttttttttttttttt;;ttttttttttttttttttttG
-King of Swords
 	</div>
-	<div id="61">
+	<div id="61" class="Knight of Swords">
 1
 t            tt G       ;;           ..             ;;t.  .  ..         . t
 t            .ttt :;t;;                       ;;t              :;   t;  t t
@@ -4496,9 +4447,8 @@ t                 t ;;tttt        .tt t;tf: G ttt C;t@ @ Ct Gt;           t
 t :@   tt;t tt@  .8tCt t     ttt  ;GCt 8tC;t.8. @ttt@..@  @ .CC           t
 t  t t t :@ ttt;C;t tt t;  tttC   @tt; :: ;: :t ; G  t ttt ;t;:  ::       t
 t                            ;.                                           ;
-Knight of Swords
 	</div>
-	<div id="62">
+	<div id="62" class="Page of Swords">
 1
 t                                                 .         ttt          tt
 t                                                          t tt          tt
@@ -4565,9 +4515,8 @@ t t t; ;t   t:t tC1C        ;        ;ttt:Ct 8C  C.G:tt @ @t C1C; t :     t
 t @tt..ttt @t    Gt      ;; Ct.      .tC;  C;tC;t tt  @ @ G  t t@   C;  . t
 t @   t  @; C@8 :C t     tttt       tCtGC   t  ;   :;t  t  t ::; ;ttt  :; C
 t        tt t;ttttttt ;ttttt  tttttttttttttttttttttttt;tttttttttttttttttttt
-Page of Swords
 	</div>
-	<div id="63">
+	<div id="63" class="Queen of Swords">
 1
 t                                                                         t
 t                                                                         t
@@ -4634,9 +4583,8 @@ t;G8   ;8818C:C88CtCttC88811tt111111111111t1:1111tGCCt..t:..t.     :. tt  t
  Ct  t8 @;  t tCC. @C  @;@;t   t;Ct: ;CCCG ;@;;@;Ct@  t@t@Ct  tt tC ttCC  t
   tCt@  ;@CtC;tCtt @;t;C  CC   Gt t  @ttCt  :;  t  ;ttt tt ;C t: t tt:;:ttt
 t;;t;t:t  :                      ;C                                       t
-Queen of Swords
 	</div>
-	<div id="64">
+	<div id="64" class="Ace of Wands">
 1
 t                                                                         t
 t                       ;;t :1t:                                          t
@@ -4704,9 +4652,8 @@ t  tt t@ @@ .   @t:      .; GC   .;@tt CGt. ;C:t@. t.;@Ct  t@  t@     tt  t
 t t@   @C t@@@: @@tt;    :C;tt     t@; :C; ;@;  @C CC  @t  CttCt  ttCCC tG@
 @
 8CttttttttttttttttttttttttGGtttttttttttttttttttttttttttttttttttttttttttttC
-Ace of Wands
 	</div>
-	<div id="65">
+	<div id="65" class="Two of Wands">
 1
 t                                                                          
 t                                  tttt                                    
@@ -4773,9 +4720,8 @@ Cttttttttt1tt1           t                                        tttttt tt
 t                                                                 ;;.tt   t
 t                                                                    t    t
 Gt        ;ttt     ;ttttttttttttttt t  ;                                  t
-Two of Wands
 	</div>
-	<div id="66">
+	<div id="66" class="Three of Wands">
 1
 t                                tttttt                                    
 t                                 t;t;.                                   ;
@@ -4842,9 +4788,8 @@ t      ;@C8C8C@@t;G;;.                tC@;8;@;.    t;88t;.. .. :@  ;@@;@t:C
 t .f;..tttt G8.. t@tC@CttC@@tt88CtC8@Ct.t8C..t8@@t t;   t;t..;@CGCt;tt ;  t
 C@@tGtt ;;tC;;Ct         t;GCCGttG;   ;CtC tCCC;          ;@@;@; CtC;tt :CG
 tttCtttC@tttC@tC@ttt    ttttttttttttCGttt8tC@C8tt@@tt@tCtC@@Gttttt@tttttttt
-Three of Wands
 	</div>
-	<div id="67">
+	<div id="67" class="Four of Wands">
 1
 t                                   ttt ;t;t                               
 t                                   t; ;t;                                 
@@ -4911,9 +4856,8 @@ t                                                                    ; t
 ;                                                                      G   
 t                                                                      :   
 Gttt;             tttttttttttttttttttttttttttttttttt;   ;;  ttttttttttt ;tt
-Four of Wands
 	</div>
-	<div id="68">	
+	<div id="68" class="Five of Wands">	
 1
                              .                                             
          :.                         G; G                                   
@@ -4980,10 +4924,9 @@ G..;iGLi@fi.,.   C: ::f.      :t.:Cf...f   GC@@@t8t011Ltii@; tt8;fff ,tLt;t
                                                                     t;    t
                                                                           t
 C@@@@@@@CCttGtttttt@t@@@@C@@@@tC@@@tttt:tt;tttttttttttttttttttttttttttttttt
-Five of Wands
 	</div>
 	<!-- SIX OF WANDS !-->
-	<div id="69">
+	<div id="69" class="Six of Wands">
 1
 t                                       .                                 t
 t                                ;t t. @         tt                       t
@@ -5050,9 +4993,8 @@ t  t       G: ;tGt:  t;       t t;       tt.  .Gtt        ttGCttC  tt .@  t
 Gt;       C; C;:t   t;        @ t         @tC;  t         ; t.; t tC;  t  t
 C     ;CC:  @:     t          C ;t                          tt tt.tC .t   t
 Gtttttttttt@;tttttt;tttttt;ttttttttttttttttttttt;ttttttttttttttttCGtt;Ctt;t
-Six of Wands
 	</div>
-	<div id="70">
+	<div id="70" class="Seven of Wands">
 1
 @                                                                         t
 @                               ;@tt;ttt;                                 t
@@ -5119,9 +5061,8 @@ t.      ..G@;   :tCt;       tftC;    t;Ct;  .  tC: ..    C;;@t;1tC@tt ....t
 ;. tt     ;t; CtCt8tt        t;Cf;tt .t;@t.t; C;          ; tG  tC@;.f  ;C 
 t  @        ttt  ;tt@ttttttt;@ ttCG;@; t ;t           tC@tt t@    ttC@ ;t  
     ;      t     t; 8.;tttt;t@ @@tttt; C t@ tttGttttttt    C;tCt   @;G;t;t.
-Seven of Wands
 	</div>
-	<div id="71">
+	<div id="71" class="Eight of Wands">
 1
 t                               ;t@ttGCt@tt                               t
 t                                 ;tC tt@tt                               t
@@ -5188,9 +5129,8 @@ t   ;;::::    .. ....        ..             tttttCttt; ttGC; CtG  ;   t ttG
 t ttt;     t:;              .                        ;t; .   Ctt . .tt ;C;C
 t.C;;          ;     t CC t:@GtG;ttttttt               ttttt  :tt     ; t;G
 t; ;;;t;tttttt@@@Ctttttttt;t;..   ;  ;t ttttttt;;  ;:ttttt     ;ttttttttttt
-Eight of Wands
 	</div>
-	<div id="72">
+	<div id="72" class="Nine of Wands">
 	1
 t                                  .  . .                                  
 t                                   t f@;                                  
@@ -5257,9 +5197,8 @@ t .                                       .C1t;G@t:8;.   1t:              t
                                      ;tttt;t;@1.        ;tt;t             t
                                            ttC:                           t
 ;          t;; ;: t; t                tt tttttttttttttttttttttttttttttttttG
-Nine of Wands
 	</div>
-	<div id="73">
+	<div id="73" class="Ten of Wands">
 1
                                 . ;t;fttt                                 t
                                     ;@t                   t:      .;@     t
@@ -5326,9 +5265,8 @@ t                                                                     t   t
 t                                                                     t   t
 t                                                                         t
 Gtttttttttttttttttttttttttttttttttttttttttt@C@@@tt  tttttt  ttttttttttttttt
-10 of Wands
 	</div>
-	<div id="74">
+	<div id="74" class="King of Wands">
 1
 t                                       t@             ;      ;tt@@@t      
 t                                       t@; tCC tCC  CG@@@@G@; ;;CtG:      
@@ -5395,9 +5333,8 @@ Gfff;.;.....    8;.ttGC@G@GGtf;.. .          .    .......    ;tttt;     : t
   t@:C.   t@  @.@tt @C;t    .tt tCt     ;@tt 8;C.;CtCt  @ C@t tG. @ .. t@ t
   ;t  ;t  ;t :t  :t  ttt;    tt; t       ;;   t; @   GC @; :: C@Ct  Ctt:: t
                              :tttt;;    ;;ttt                ttttt;:ttttttt
-King of Wands
 	</div>
-	<div id="75">
+	<div id="75" class="Knight of Wands">
 		1
 t                                ;t                                       t
 t                               GG;t                                      t
@@ -5464,9 +5401,8 @@ t;.                                                    G;    ;t@t   ;;@Gt.@
  t@G;. t:@ @ tt@t.. C@:@  .@;    .t;    @;t@;.8 tGtt tt@ @ tt  @tC;t       
   @ ;G t  C@ ttC@:@ Ct @   @:  Ctttt    :@t C@ ;t  t;tt t@ tC ;:;; tt;;    
          tttttttttttttttttttttttttCtttttttttttttttttttttttttttttttttttttttC
-Knight of Wands
 	</div>
-	<div id="76">
+	<div id="76" class="Page of Wands">
 1
 G.                                                                        t
 G                                                                         t
@@ -5533,9 +5469,8 @@ t C@t@ttt@  ;@tt: C@ :       ;      ;@t t@:  G: t8;  t@;:t @t tttC ::     @
 t G@8t.Ctt@.@f    @Ct      ;;8C;     t@.C:8 C; C;;@  t Ctt @t ;@.  @G     C
 t @@: Ct  CC;C@@t @@@t    ;C;tt       :t   t  tt  tC;@  t;:tttt:tttt :t:  C
 CttttttttttttCtGttttt@@tttttttttttttttttttttttt@@ttttt@@@@@@@@@@@@@@ttttt@@
-Page of Wands
 	</div>
-	<div id="77">
+	<div id="77" class="Queen of Wands">
 		1
 t..                 t;. ;CCC@t. ;Ct;t.C Ct. ; CtG ;  t                     
 t                   t .;;t   tt    Ct;:t ..:   ; ;;.  t                    
@@ -5602,7 +5537,6 @@ t G  :t tt  t  tt C tt    @; tt  . ;; . tGt:C;G t tt  C@t t @. @; C ::
 t;t   tt;t  t  tt   tt:   t;G t .;;;tC   tt  t ;: .@; t @ t @. tt ;  @     
 t ;;C@G  t;;tG:;; : :: t ;:  C;  :: t     :    ::  tt t: t; t;:  ;ttt   t  
       t@G                                                  ;               
-Queen of Wands
 	</div>
 </div>
 </body>
