@@ -97,53 +97,47 @@
 				//not using a loop for async
 
 				$(".key").hide();
-				//wards the Blessed Virgin
-				console.log("8===============D")
+				
 				//some quirk with quantum / tarot combination? 
 				getData(arrDigits, function(err, data){
 					arrDigits.push(data);
-					setTimeout(function(){
-						console.log(data);
-
+					
 						$("#tarot_" + data).appendTo($("#key_2"));
 						//$("#key_2").append(arrDigits[0]);
 						$("#key_2").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 						$("#key_2").fadeIn(1000);
 						if($("#key_2 span").text() === "undefined"){
 							//cologne workaround
-							$("#key_2 span").text("wildcard");
+							$("#key_2 span").text("joker");
 						}
 						getData(arrDigits, function(err, data){
 							arrDigits.push(data);
-							setTimeout(function(){
-								console.log(data);
+							
 								$("#tarot_" + data).appendTo($("#key_1"));
 								//$("#key_1").append(arrDigits[1]);
 								$("#key_1").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");	
 								$("#key_1").fadeIn(1000);
 								if($("#key_1 span").text() === "undefined"){
 									//cologne workaround
-									$("#key_1 span").text("wildcard");
+									$("#key_1 span").text("joker");
 								}
 								getData(arrDigits, function(err, data){
 									
 									arrDigits.push(data);
-									setTimeout(function(){
-										console.log(data);
+									
 										$("#tarot_" + data).appendTo($("#key_3"));
 										//$("#key_3").append(arrDigits[2]);
 										$("#key_3").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 										$("#key_3").fadeIn(1000);
 										if($("#key_3 span").text() === "undefined"){
-											$("#key_3 span").text("wildcard");
+											$("#key_3 span").text("joker");
 										
 										}
-									},500)							
+									
 								});	
-						},500)									
-					//timeouts will be deleted once i find the error
+													
+					
 						});
-					},500)
 					
 				});
 			}
