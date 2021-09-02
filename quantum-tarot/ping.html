@@ -118,11 +118,11 @@
 				$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8&size=6", function(data){
 					var data = data.data[0];
 					
-					if(data <= 77 && arrDigits.indexOf(data) === -1){						
+					console.log(data);
+					if(data <= 77 && arrDigits.indexOf(data) === -1){					
 						cb(null, data);
 					}
-					else{
-						//problem
+					else{						
 						getData(arrDigits, cb);
 					}
 				})
