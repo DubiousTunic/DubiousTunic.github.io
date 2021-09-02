@@ -89,12 +89,19 @@
 						arrDigits.push(data);						
 						getData(arrDigits, function(err, data){
 							arrDigits.push(data);
+							console.log(arrDigits);
+							for(var i = 0; i < arrDigits.length; i++){
+								console.log($("#" + arrDigits[i]).attr('class') + " " + arrDigits[i]);
+							}
+					
 							$("#" + arrDigits[0]).appendTo($("#key_2"));
 							$("#key_2").append("<span class='title'>" + $("#" + arrDigits[0]).attr("class") + "</class>");
 							$("#" + arrDigits[1]).appendTo($("#key_1"));
 							$("#key_1").append("<span class='title'>" + $("#" + arrDigits[1]).attr("class") + "</class>");
 							$("#" + arrDigits[2]).appendTo($("#key_3"));
 							$("#key_3").append("<span class='title'>" + $("#" + arrDigits[2]).attr("class") + "</class>");
+					
+							
 						});
 					});
 				});
@@ -117,12 +124,19 @@
 			function getData(arrDigits, cb){
 				$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8&size=6", function(data){
 					var data = data.data[0];
-					
 					console.log(data);
-					if(data <= 77 && arrDigits.indexOf(data) === -1){					
+
+					if(arrDigits.indexOf(data) !== -1){
+						console.log("EXPECT ERROR: " + data);
+					}	
+					
+					if(data <= 77 && arrDigits.indexOf(data) === -1){	
+
+						console.log(data);				
 						cb(null, data);
 					}
-					else{						
+					else{			
+								
 						getData(arrDigits, cb);
 					}
 				})
@@ -1380,7 +1394,7 @@ f .  .         tt CCt1Ct@ @ Ct@ tt.8tt@@  tt@  tt G@ 8;t8t8@@@@@@@@@@@@@@@@
           @;   Gt  tt @CtC        CG    tttt   ;@;;C   GCCt: t  :t  t     t
 t                                                                         t
 </div>
-<div id="17" class="The Tower">
+<div id="17" class="The Star">
 1
 t                                tt; t ;:@ tt                             t
 t                               ;CGCt @Ct@tCCt                            t
