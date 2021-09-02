@@ -18,9 +18,9 @@
 	<br>
 	<div class="tarot">
 		<pre>
-			<div class="data">
-				<div id="key_2" class="key"></div>
+			<div class="data">				
 				<div id="key_1" class="key"></div>
+				<div id="key_2" class="key"></div>
 				<div id="key_3" class="key"></div>
 			</div>		
 		</pre>
@@ -84,22 +84,29 @@
 				//not using a loop for async
 
 				getData(arrDigits, function(err, data){
+					console.log("returned cb");
 					arrDigits.push(data);
+					$("#" + arrDigits[0]).appendTo($("#key_2"));
+					$("#key_2").append("<span class='title'>" + $("#" + arrDigits[0]).attr("class") + "</class>");
 					getData(arrDigits, function(err, data){
-						arrDigits.push(data);						
+						console.log("returned cb");
+						arrDigits.push(data);		
+						$("#" + arrDigits[1]).appendTo($("#key_1"));
+						$("#key_1").append("<span class='title'>" + $("#" + arrDigits[1]).attr("class") + "</class>");				
 						getData(arrDigits, function(err, data){
+
+							console.log("returned cb");
 							arrDigits.push(data);
+							$("#" + arrDigits[2]).appendTo($("#key_3"));
+							$("#key_3").append("<span class='title'>" + $("#" + arrDigits[2]).attr("class") + "</class>");
 							console.log(arrDigits);
 							for(var i = 0; i < arrDigits.length; i++){
 								console.log($("#" + arrDigits[i]).attr('class') + " " + arrDigits[i]);
 							}
 					
-							$("#" + arrDigits[0]).appendTo($("#key_2"));
-							$("#key_2").append("<span class='title'>" + $("#" + arrDigits[0]).attr("class") + "</class>");
-							$("#" + arrDigits[1]).appendTo($("#key_1"));
-							$("#key_1").append("<span class='title'>" + $("#" + arrDigits[1]).attr("class") + "</class>");
-							$("#" + arrDigits[2]).appendTo($("#key_3"));
-							$("#key_3").append("<span class='title'>" + $("#" + arrDigits[2]).attr("class") + "</class>");
+							
+							
+							
 					
 							
 						});
@@ -124,20 +131,16 @@
 			function getData(arrDigits, cb){
 				$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8&size=6", function(data){
 					var data = data.data[0];
-					console.log(data);
+					//console.log(data);
 
-					if(arrDigits.indexOf(data) !== -1){
-						console.log("EXPECT ERROR: " + data);
-					}	
-					
 					if(data <= 77 && arrDigits.indexOf(data) === -1){	
-
 						console.log(data);				
 						cb(null, data);
 					}
 					else{			
-								
-						getData(arrDigits, cb);
+						//so apparently this form of recursion causes an error?	
+						console.log("error");					
+						getData(arrDigits, cb);						
 					}
 				})
 			}	
@@ -198,6 +201,8 @@ table {
 .key{
 	font-family: monospace;
     white-space: pre;
+    width: 170px;
+
 }
 
 	h1{
@@ -782,7 +787,7 @@ C@t@@G@@;.GC@GfG@@@@@@@; t;f8f@@@@; ;; : C :1ttf. 11;            C;;:;:; tC
                                                                           t
 ;  ;t ;tt;t:tttttttttttttttttttt ttt; ttttttttttttttttttttttttttttttttttttt
 	</div>
-	<div id="8" class="Fortress">
+	<div id="8" class="The Establishment">
 1
 t..                       .                                               t
 t                                t @:;CC;C;                               t
@@ -1190,7 +1195,7 @@ t               t@   @  @tC    t; :@;   t@t    t@   @t                    t
 t              :tCt:t   @ttC: GC   C@;  t@C    t@; :tt   ::               t
 Gttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt  G
 	</div>
-	<div id="14" class="Enchantment">
+	<div id="14" class="Temperance">
 1
 t                           :tttttttttt;                                   
 G                             Ct @.G;t                                     
