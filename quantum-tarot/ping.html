@@ -18,10 +18,16 @@
 	<br>
 	<div class="tarot">
 		<pre>
-			<div class="data">				
-				<div id="key_1" class="key"></div>
-				<div id="key_2" class="key"></div>
-				<div id="key_3" class="key"></div>
+			<div class="data">			
+				<div class="key_holder">	
+					<div id="key_1" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_2" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_3" class="key"></div>
+				</div>
 			</div>		
 		</pre>
 	</div>
@@ -83,32 +89,39 @@
 
 				//not using a loop for async
 
+				$(".key").hide();
+
 				getData(arrDigits, function(err, data){
 					console.log("returned cb");
 					arrDigits.push(data);
-					$("#" + arrDigits[0]).appendTo($("#key_2"));
-					$("#key_2").append("<span class='title'>" + $("#" + arrDigits[0]).attr("class") + "</class>");
+					console.log("digits: " + arrDigits[0])
+					setTimeout(function(){
+						$("#" + arrDigits[0]).appendTo($("#key_2"));
+						$("#key_2").append("<span class='title'>" + $("#" + arrDigits[0]).attr("class") + "</class>");
+						$("#key_2").fadeIn(1000);
+					},100)
 					getData(arrDigits, function(err, data){
 						console.log("returned cb");
-						arrDigits.push(data);		
-						$("#" + arrDigits[1]).appendTo($("#key_1"));
-						$("#key_1").append("<span class='title'>" + $("#" + arrDigits[1]).attr("class") + "</class>");				
+						arrDigits.push(data);
+						console.log("digits: " + arrDigits[1])	
+						setTimeout(function(){
+							$("#" + arrDigits[1]).appendTo($("#key_1"));
+							$("#key_1").append("<span class='title'>" + $("#" + arrDigits[1]).attr("class") + "</class>");	
+							$("#key_1").fadeIn(1000);	
+						},100)									
 						getData(arrDigits, function(err, data){
-
 							console.log("returned cb");
-							arrDigits.push(data);
-							$("#" + arrDigits[2]).appendTo($("#key_3"));
-							$("#key_3").append("<span class='title'>" + $("#" + arrDigits[2]).attr("class") + "</class>");
-							console.log(arrDigits);
 							for(var i = 0; i < arrDigits.length; i++){
 								console.log($("#" + arrDigits[i]).attr('class') + " " + arrDigits[i]);
-							}
-					
-							
-							
-							
-					
-							
+							}			
+							arrDigits.push(data);
+							console.log("digits: " + arrDigits[2]);
+							setTimeout(function(){
+								$("#" + arrDigits[2]).appendTo($("#key_3"));
+								$("#key_3").append("<span class='title'>" + $("#" + arrDigits[2]).attr("class") + "</class>");
+								$("#key_3").fadeIn(1000);
+							},100)							
+							console.log(arrDigits);						
 						});
 					});
 				});
@@ -133,6 +146,7 @@
 					var data = data.data[0];
 					//console.log(data);
 
+					//the reason the errors get produced is because the API gives numbers 1-255 without an option to minify the Set so we have to recursively call the fn until we get num 0-77
 					if(data <= 77 && arrDigits.indexOf(data) === -1){	
 						console.log(data);				
 						cb(null, data);
@@ -198,11 +212,15 @@ table {
 	border-spacing: 0;
 }
 
+.key_holder{
+    width: 170px;
+    float: left;
+    padding: 22px;
+}
+
 .key{
 	font-family: monospace;
     white-space: pre;
-    width: 170px;
-
 }
 
 	h1{
