@@ -123,7 +123,7 @@
 							$("#key_2").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 						}
 						$("#key_2").fadeIn(1000);
-						if($("#key_2 span").text() === "undefined"){
+						if($("#key_2 span").text() === "undefined" || $("#key_2 span").text() === "-undefined"){
 							//cologne workaround
 							$("#key_2 span").text("quantum divine");
 						}
@@ -147,7 +147,8 @@
 
 								}
 								$("#key_1").fadeIn(1000);
-								if($("#key_1 span").text() === "undefined"){
+								if($("#key_2 span").text() === "undefined" || $("#key_2 span").text() === "-undefined"){
+
 									//cologne workaround
 									$("#key_1 span").text("quantum divine");
 								}
@@ -170,9 +171,8 @@
 											$("#key_3").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 										}
 										$("#key_3").fadeIn(1000);
-										if($("#key_3 span").text() === "undefined"){
-											$("#key_3 span").text("quantum divine");
-										
+										if($("#key_2 span").text() === "undefined" || $("#key_2 span").text() === "-undefined"){
+											$("#key_3 span").text("quantum divine");										
 										}
 									
 								});	
