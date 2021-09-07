@@ -137,6 +137,14 @@
 
 	<script>
 		$(document).ready(function(){
+
+			/* wobbles the cards */
+			function wobbleCard(id){
+				var wobble = (Math.floor(Math.random() * 8) - 8);				
+				id.css({"transform": "rotate(" + wobble + ")"})				
+			}
+
+
 			$("#home").click(function(e){
 				e.preventDefault();
 				$(".tarot").hide();
@@ -212,12 +220,14 @@
 			
 			function oneCardSpread(){
 				var arrDigits = []
+
+				$(".data").hide();
 				getData(arrDigits, function(err, data){
 					arrDigits.push(data);
 
 						//nonquantum upsidedown technically reverses structure of quantum computing
 						$("#tarot_" + data).appendTo($("#data_1 #key_2"));
-
+						//USSS wobble
 						var upsidedown = Math.floor(Math.random() * 1);
 						if(upsidedown) flip($("#tarot_" +data));
 						console.log(upsidedown);
@@ -231,12 +241,13 @@
 						}
 						else{
 							$("#data_1 #key_2").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
-						}
-						$("#data_1 #key_2").fadeIn(1000);
+						}						
 						if($("#data_1 #key_2 span").text() === "undefined" || $("#data_1 #key_2 span").text() === "-undefined"){
 							//cologne workaround
 							$("#data_1 #key_2 span").text("quantum divine");
 						}
+						$("#data_1 #key_2").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+						$(".data").fadeIn(1337);
 				})
 			}
 
@@ -290,6 +301,7 @@
 									//cologne workaround
 									$("#fu_master_1 #keltic_1 span").text("quantum divine");
 								}
+								$("#fu_master_1 #keltic_1").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
 								getData(arrDigits, function(err, data){
 									
 									arrDigits.push(data);
@@ -312,6 +324,8 @@
 										if($("#fu_master_2 #keltic_2 span").text() === "undefined" || $("#fu_master_2 #keltic_2 span").text() === "-undefined"){
 											$("#fu_master_2 #keltic_2 span").text("quantum divine");										
 										}
+
+										$("#fu_master_2 #keltic_2").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
 										getData(arrDigits, function(err, data){
 											arrDigits.push(data);
 
@@ -337,6 +351,8 @@
 													//cologne workaround
 													$("#fu_master_3 #keltic_3 span").text("quantum divine");
 												}
+												$("#fu_master_3 #keltic_3").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+
 												getData(arrDigits, function(err, data){
 													arrDigits.push(data);
 													
@@ -361,6 +377,8 @@
 															//cologne workaround
 															$("#fu_master_4 #keltic_4 span").text("quantum divine");
 														}
+														$("#fu_master_4 #keltic_4").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+
 														getData(arrDigits, function(err, data){
 															
 															arrDigits.push(data);
@@ -383,6 +401,8 @@
 																if($("#fu_master_5 #keltic_5 span").text() === "undefined" || $("#fu_master_5 #keltic_5 span").text() === "-undefined"){
 																	$("#fu_master_5 #keltic_5 span").text("quantum divine");										
 																}
+																$("#fu_master_5 #keltic_5").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+
 																getData(arrDigits, function(err, data){
 															
 																	arrDigits.push(data);
@@ -405,6 +425,8 @@
 																		if($("#fu_master_6 #keltic_6 span").text() === "undefined" || $("#fu_master_6 #keltic_6 span").text() === "-undefined"){
 																			$("#fu_master_6 #keltic_6 span").text("quantum divine");										
 																		}
+																		$("#fu_master_6 #keltic_6").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+
 																		getData(arrDigits, function(err, data){
 																	
 																			arrDigits.push(data);
@@ -427,6 +449,8 @@
 																				if($("#fu_master_7 #keltic_7 span").text() === "undefined" || $("#fu_master_7 #keltic_7 span").text() === "-undefined"){
 																					$("#fu_master_7 #keltic_7 span").text("quantum divine");										
 																				}
+																				$("#fu_master_7 #keltic_7").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+
 																				getData(arrDigits, function(err, data){
 															
 																					arrDigits.push(data);
@@ -449,6 +473,8 @@
 																						if($("#fu_master_8 #keltic_8 span").text() === "undefined" || $("#fu_master_8 #keltic_8 span").text() === "-undefined"){
 																							$("#fu_master_8 #keltic_8 span").text("quantum divine");										
 																						}
+																					$("#fu_master_8 #keltic_8").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 4) - 5) +'deg)'})
+
 																					getData(arrDigits, function(err, data){
 															
 																						arrDigits.push(data);
@@ -471,6 +497,8 @@
 																							if($("#fu_master_9 #keltic_9 span").text() === "undefined" || $("#fu_master_9 keltic_9 span").text() === "-undefined"){
 																								$("#fu_master_9 #keltic_9 span").text("quantum divine");										
 																							}
+																							$("#fu_master_9 #keltic_9").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+
 																							
 																						
 																					});	
@@ -536,6 +564,8 @@
 							//cologne workaround
 							$("#data_" + i + " #key_2 span").text("quantum divine");
 						}
+
+						$("#data_" + i + " #key_2").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
 						getData(arrDigits, function(err, data){
 							arrDigits.push(data);
 							
@@ -560,6 +590,8 @@
 									//cologne workaround
 									$("#data_" + i + " #key_1 span").text("quantum divine");
 								}
+								$("#data_" + i + " #key_1").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+
 								getData(arrDigits, function(err, data){
 									
 									arrDigits.push(data);
@@ -584,6 +616,8 @@
 										}
 										console.log("DIMENSION: " + i);
 										if(i > 1) openingKeySpread(i - 1, arrDigits)
+
+										$("#data_" + i + " #key_3").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
 									
 								});	
 													
