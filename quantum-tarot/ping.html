@@ -4,7 +4,7 @@
 <body>
 	<h1><a href="#" id="home">Quantum Divine</a></h1>
 	<br>
-	<ul class="front_ul"><li><a id="draw_tarot" href="#">Draw Tarot</li><li><a id="draw_iching" href="#">Draw IChing</a><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></li></ul>
+	<ul class="front_ul"><li><a class="draw_tarot" id="draw_one" href="#">One Card Spread</a></li><li><a class="draw_tarot" id="keltic_cross" href="#">Keltic Cross</a></li><li><a class="draw_tarot" id="draw_key" href="#">Minor Key Spread</a></li><li><a class="draw_tarot" id="draw_major_key" href="#">Opening of the Key Spread</a></li><li><a id="draw_iching" href="#">IChing reading</a><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></li></ul>
 	<br>
 	<h2 class="quantum_shift"></h2>
 	<br>
@@ -17,8 +17,71 @@
 	</div>
 	<br>
 	<div class="tarot">
-		<pre>
-			<div class="data">			
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_0" class="key"></div>
+			</div>
+		</div>
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_1" class="key"></div>
+			</div>
+		</div>
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_2" class="key"></div>
+			</div>
+		</div>
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_3" class="key"></div>
+			</div>
+		</div>
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_4" class="key"></div>
+			</div>
+		</div>
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_5" class="key"></div>
+			</div>
+		</div>
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_6" class="key"></div>
+			</div>
+		</div>
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_7" class="key"></div>
+			</div>
+		</div>
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_8" class="key"></div>
+			</div>
+		</div>
+		<div class="data">	
+			<div class="key_holder">	
+				<div id="keltic_9" class="key"></div>
+			</div>
+		</div>
+
+		
+
+			<div class="data" id="data_2"><
+				<div class="key_holder">	
+					<div id="key_1" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_2" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_3" class="key"></div>
+				</div>
+			</div>
+			<div class="data" id="data_1">			
 				<div class="key_holder">	
 					<div id="key_1" class="key"></div>
 				</div>
@@ -29,7 +92,40 @@
 					<div id="key_3" class="key"></div>
 				</div>
 			</div>		
-		</pre>
+			<div class="data" id="data_3"><
+				<div class="key_holder">	
+					<div id="key_1" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_2" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_3" class="key"></div>
+				</div>
+			</div>
+			<div class="data" id="data_4"><
+				<div class="key_holder">	
+					<div id="key_1" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_2" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_3" class="key"></div>
+				</div>
+			</div>
+			<div class="data" id="data_5"><
+				<div class="key_holder">	
+					<div id="key_1" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_2" class="key"></div>
+				</div>
+				<div class="key_holder">
+					<div id="key_3" class="key"></div>
+				</div>
+			</div>
+		
 	</div>
 	<div class="iching">
 		<div class="iching_data">
@@ -47,17 +143,20 @@
 				$(".intro").show();
 			})
 
+			//the father shrank my ears over 3 years just to mess with my current relationship with Japanese
 			//the error seems to happen when a number repeats from a previous iteration
-			$("#draw_tarot").click(function(e){
+			$(".draw_tarot").click(function(e){
+				console.log("tarot click");
 				$(".intro").hide();
 				$(".iching").hide();
 				$(".key").empty();
 				$(".tarot").show();
 				e.preventDefault();
 				$(".quantum-shift").text("Draw Tarot");
-				openingKeySpread()
+				
 			})
 
+			//please understand
 			$("#draw_iching").click(function(e){
 				$(".intro").hide()
 				$(".tarot").hide();
@@ -68,6 +167,26 @@
 				iching(function(err, data){
 					$(".iching_data").append(HEXAGRAMS[data]);
 				});
+			})
+
+			$("#draw_key").click(function(e){
+				e.preventDefault()
+				openingKeySpread(1, [])
+			})
+
+			$("#draw_one").click(function(e){
+				e.preventDefault();
+				oneCardSpread();
+			})
+
+			$("#keltic_cross").click(function(e){
+				e.preventDefault();
+				kelticCross(1, [])
+			})
+
+			$("#draw_major_key").click(function(e){
+				e.preventDefault();
+				openingKeySpread(5, [])
 			})
 
 
@@ -86,27 +205,13 @@
 				id.css({"transform": "scaleY(-1)"})
 			}
 			
-//ss
-			//have to think about this
-			//on the first read there should never be an error(?)
-			//sometimes serial errors can be tricky but this seems different to me
-			function openingKeySpread(){
-				//clear
-				var arrDigits = [];
-
-				//communicating with daimon
-				//what other variable could not be clear?
-
-				//not using a loop for async
-
-				$(".key").hide();
-				
-				//some quirk with quantum / tarot combination? 
+			function oneCardSpread(){
+				var arrDigits = []
 				getData(arrDigits, function(err, data){
 					arrDigits.push(data);
 
 						//nonquantum upsidedown technically reverses structure of quantum computing
-						$("#tarot_" + data).appendTo($("#key_2"));
+						$("#tarot_" + data).appendTo($("#data_1 #key_2"));
 
 						var upsidedown = Math.floor(Math.random() * 1);
 						if(upsidedown) flip($("#tarot_" +data));
@@ -117,20 +222,49 @@
 					
 						//$("#key_2").append(arrDigits[0]);
 						if(upsidedown === -1){
-							$("#key_2").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+							$("#data_1 #key_2").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 						}
 						else{
-							$("#key_2").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+							$("#data_1 #key_2").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 						}
-						$("#key_2").fadeIn(1000);
-						if($("#key_2 span").text() === "undefined" || $("#key_2 span").text() === "-undefined"){
+						$("#data_1 #key_2").fadeIn(1000);
+						if($("#data_1 #key_2 span").text() === "undefined" || $("#data_1 #key_2 span").text() === "-undefined"){
 							//cologne workaround
-							$("#key_2 span").text("quantum divine");
+							$("#data_1 #key_2 span").text("quantum divine");
+						}
+				})
+			}
+
+			function kelticCross(iterations, arrDigits){
+				getData(arrDigits, function(err, data){
+					arrDigits.push(data);
+
+						//nonquantum upsidedown technically reverses structure of quantum computing
+						$("#tarot_" + data).appendTo($("#keltic_0"));
+
+						var upsidedown = Math.floor(Math.random() * 1);
+						if(upsidedown) flip($("#tarot_" +data));
+						console.log(upsidedown);
+						if(upsidedown === 1){
+							upsidedown = -1;
+						}
+					
+						//$("#key_2").append(arrDigits[0]);
+						if(upsidedown === -1){
+							$("#keltic_0").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+						}
+						else{
+							$("#keltic_0").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+						}
+						$("#keltic_0").fadeIn(1000);
+						if($("#keltic_0").text() === "undefined" || $("#keltic_0 span").text() === "-undefined"){
+							//cologne workaround
+							$("#keltic_0").text("quantum divine");
 						}
 						getData(arrDigits, function(err, data){
 							arrDigits.push(data);
 							
-								$("#tarot_" + data).appendTo($("#key_1"));
+								$("#tarot_" + data).appendTo($("#keltic_1"));
 								var upsidedown = Math.floor(Math.random() * 2);
 								if(upsidedown) flip($("#tarot_" +data));
 								console.log(upsidedown);
@@ -140,23 +274,22 @@
 								//$("#key_1").append(arrDigits[1]);
 
 								if(upsidedown === -1){
-									$("#key_1").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");	
+									$("#keltic_1").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");	
 								}
 								else{
-									$("#key_1").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");	
-
+									$("#keltic_1").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");	
 								}
-								$("#key_1").fadeIn(1000);
-								if($("#key_1 span").text() === "undefined" || $("#key_1 span").text() === "-undefined"){
+								$("#keltic_1").fadeIn(1000);
+								if($("#keltic_1 span").text() === "undefined" || $("#keltic_1 span").text() === "-undefined"){
 
 									//cologne workaround
-									$("#key_1 span").text("quantum divine");
+									$("#keltic_1 span").text("quantum divine");
 								}
 								getData(arrDigits, function(err, data){
 									
 									arrDigits.push(data);
 									
-										$("#tarot_" + data).appendTo($("#key_3"));
+										$("#tarot_" + data).appendTo($("#keltic_2"));
 										var upsidedown = Math.floor(Math.random() * 1);
 										if(upsidedown) flip($("#tarot_" +data));
 										console.log(upsidedown);
@@ -165,15 +298,287 @@
 										}
 										//$("#key_3").append(arrDigits[2]);
 										if(upsidedown === -1){
-											$("#key_3").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+											$("#keltic_2").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 										}
 										else{
-											$("#key_3").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+											$("#keltic_2").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 										}
-										$("#key_3").fadeIn(1000);
-										if($("#key_3 span").text() === "undefined" || $("#key_3 span").text() === "-undefined"){
-											$("#key_3 span").text("quantum divine");										
+										$("#keltic_2").fadeIn(1000);
+										if($("#keltic_2 span").text() === "undefined" || $("#keltic_2 span").text() === "-undefined"){
+											$("#keltic_2 span").text("quantum divine");										
 										}
+										getData(arrDigits, function(err, data){
+											arrDigits.push(data);
+
+												//nonquantum upsidedown technically reverses structure of quantum computing
+												$("#tarot_" + data).appendTo($("#keltic_3"));
+
+												var upsidedown = Math.floor(Math.random() * 1);
+												if(upsidedown) flip($("#tarot_" +data));
+												console.log(upsidedown);
+												if(upsidedown === 1){
+													upsidedown = -1;
+												}
+											
+												//$("#key_2").append(arrDigits[0]);
+												if(upsidedown === -1){
+													$("#keltic_3").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+												}
+												else{
+													$("#keltic_3").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+												}
+												$("#keltic_3").fadeIn(1000);
+												if($("#keltic_3 span").text() === "undefined" || $("#keltic_4 span").text() === "-undefined"){
+													//cologne workaround
+													$("#keltic_3 span").text("quantum divine");
+												}
+												getData(arrDigits, function(err, data){
+													arrDigits.push(data);
+													
+														$("#tarot_" + data).appendTo($("#keltic_4"));
+														var upsidedown = Math.floor(Math.random() * 2);
+														if(upsidedown) flip($("#tarot_" +data));
+														console.log(upsidedown);
+														if(upsidedown === 1){
+															upsidedown = -1
+														}
+														//$("#key_1").append(arrDigits[1]);
+
+														if(upsidedown === -1){
+															$("#keltic_4").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");	
+														}
+														else{
+															$("#keltic_4").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");	
+														}
+														$("#keltic_4").fadeIn(1000);
+														if($("#keltic_4 span").text() === "undefined" || $("#keltic_4 span").text() === "-undefined"){
+
+															//cologne workaround
+															$("#keltic_4 span").text("quantum divine");
+														}
+														getData(arrDigits, function(err, data){
+															
+															arrDigits.push(data);
+															
+																$("#tarot_" + data).appendTo($("#keltic_5"));
+																var upsidedown = Math.floor(Math.random() * 1);
+																if(upsidedown) flip($("#tarot_" +data));
+																console.log(upsidedown);
+																if(upsidedown == 1){
+																	upsidedown = -1
+																}
+																//$("#key_3").append(arrDigits[2]);
+																if(upsidedown === -1){
+																	$("#keltic_5").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																}
+																else{
+																	$("#keltic_5").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																}
+																$("#keltic_5").fadeIn(1000);
+																if($("#keltic_5 span").text() === "undefined" || $("#keltic_5 span").text() === "-undefined"){
+																	$("#keltic_5 span").text("quantum divine");										
+																}
+																getData(arrDigits, function(err, data){
+															
+																	arrDigits.push(data);
+																	
+																		$("#tarot_" + data).appendTo($("#keltic_6"));
+																		var upsidedown = Math.floor(Math.random() * 1);
+																		if(upsidedown) flip($("#tarot_" +data));
+																		console.log(upsidedown);
+																		if(upsidedown == 1){
+																			upsidedown = -1
+																		}
+																		//$("#key_3").append(arrDigits[2]);
+																		if(upsidedown === -1){
+																			$("#keltic_6").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																		}
+																		else{
+																			$("#keltic_6").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																		}
+																		$("#keltic_6").fadeIn(1000);
+																		if($("#keltic_6 span").text() === "undefined" || $("#keltic_6 span").text() === "-undefined"){
+																			$("#keltic_6 span").text("quantum divine");										
+																		}
+																		getData(arrDigits, function(err, data){
+																	
+																			arrDigits.push(data);
+																			
+																				$("#tarot_" + data).appendTo($("#keltic_7"));
+																				var upsidedown = Math.floor(Math.random() * 1);
+																				if(upsidedown) flip($("#tarot_" +data));
+																				console.log(upsidedown);
+																				if(upsidedown == 1){
+																					upsidedown = -1
+																				}
+																				//$("#key_3").append(arrDigits[2]);
+																				if(upsidedown === -1){
+																					$("#keltic_7").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																				}
+																				else{
+																					$("#keltic_7").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																				}
+																				$("#keltic_7").fadeIn(1000);
+																				if($("#keltic_7 span").text() === "undefined" || $("#keltic_7 span").text() === "-undefined"){
+																					$("#keltic_7 span").text("quantum divine");										
+																				}
+																				getData(arrDigits, function(err, data){
+															
+																					arrDigits.push(data);
+																					
+																						$("#tarot_" + data).appendTo($("#keltic_8"));
+																						var upsidedown = Math.floor(Math.random() * 1);
+																						if(upsidedown) flip($("#tarot_" +data));
+																						console.log(upsidedown);
+																						if(upsidedown == 1){
+																							upsidedown = -1
+																						}
+																						//$("#key_3").append(arrDigits[2]);
+																						if(upsidedown === -1){
+																							$("#keltic_8").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																						}
+																						else{
+																							$("#keltic_8").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																						}
+																						$("#keltic_8").fadeIn(1000);
+																						if($("#keltic_8 span").text() === "undefined" || $("#keltic_8 span").text() === "-undefined"){
+																							$("#keltic_8 span").text("quantum divine");										
+																						}
+																					getData(arrDigits, function(err, data){
+															
+																						arrDigits.push(data);
+																						
+																							$("#tarot_" + data).appendTo($("#keltic_9"));
+																							var upsidedown = Math.floor(Math.random() * 1);
+																							if(upsidedown) flip($("#tarot_" +data));
+																							console.log(upsidedown);
+																							if(upsidedown == 1){
+																								upsidedown = -1
+																							}
+																							//$("#key_3").append(arrDigits[2]);
+																							if(upsidedown === -1){
+																								$("#keltic_9").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																							}
+																							else{
+																								$("#keltic_9").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																							}
+																							$("#keltic_9").fadeIn(1000);
+																							if($("#keltic_9 span").text() === "undefined" || $("#keltic_9 span").text() === "-undefined"){
+																								$("#keltic_9 span").text("quantum divine");										
+																							}
+																							
+																						
+																					});	
+																				});			
+																		});			
+																});	
+															
+														});	
+																			
+											
+												});
+											
+										});
+									
+								});	
+													
+					
+						});
+					
+				});
+			}
+
+
+			/* Mi5 */
+			//have to think about this
+			//on the first read there should never be an error(?)
+			//sometimes serial errors can be tricky but this seems different to me
+	
+			//i : dimension
+			function openingKeySpread(i, arrDigits){
+				//clear
+				//communicating with daimon
+				//what other variable could not be clear?
+
+				//not using a loop for async
+
+				console.log("TEST " + i);
+				
+				
+				//some quirk with quantum / tarot combination? 
+				getData(arrDigits, function(err, data){
+					arrDigits.push(data);
+
+						//nonquantum upsidedown technically reverses structure of quantum computing
+						$("#tarot_" + data).appendTo($("#data_" + i + " #key_2"));
+
+						var upsidedown = Math.floor(Math.random() * 1);
+						if(upsidedown) flip($("#tarot_" +data));
+						console.log(upsidedown);
+						if(upsidedown === 1){
+							upsidedown = -1;
+						}
+					
+						//$("#key_2").append(arrDigits[0]);
+						if(upsidedown === -1){
+							$("#data_" + i + " #key_2").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+						}
+						else{
+							$("#data_" + i + " #key_2").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+						}
+						$("#data_" + i + " #key_2").fadeIn(1000);
+						if($("#data_" + i + " #key_2 span").text() === "undefined" || $("#data_" + i + " #key_2 span").text() === "-undefined"){
+							//cologne workaround
+							$("#data_" + i + " #key_2 span").text("quantum divine");
+						}
+						getData(arrDigits, function(err, data){
+							arrDigits.push(data);
+							
+								$("#tarot_" + data).appendTo($("#data_" + i  + " #key_1"));
+								var upsidedown = Math.floor(Math.random() * 2);
+								if(upsidedown) flip($("#tarot_" +data));
+								console.log(upsidedown);
+								if(upsidedown === 1){
+									upsidedown = -1
+								}
+								//$("#key_1").append(arrDigits[1]);
+
+								if(upsidedown === -1){
+									$("#data_" + i + " #key_1").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");	
+								}
+								else{
+									$("#data_" + i + " #key_1").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");	
+								}
+								$("#data_" + i + " #key_1").fadeIn(1000);
+								if($("#data_" + i + " #key_1 span").text() === "undefined" || $("#data_" + i + " #key_1 span").text() === "-undefined"){
+
+									//cologne workaround
+									$("#data_" + i + " #key_1 span").text("quantum divine");
+								}
+								getData(arrDigits, function(err, data){
+									
+									arrDigits.push(data);
+									
+										$("#tarot_" + data).appendTo($("#data_" + i + " #key_3"));
+										var upsidedown = Math.floor(Math.random() * 1);
+										if(upsidedown) flip($("#tarot_" +data));
+										console.log(upsidedown);
+										if(upsidedown == 1){
+											upsidedown = -1
+										}
+										//$("#key_3").append(arrDigits[2]);
+										if(upsidedown === -1){
+											$("#data_" + i + " #key_3").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+										}
+										else{
+											$("#data_" + i + " #key_3").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+										}
+										$("#data_" + i + " #key_3").fadeIn(1000);
+										if($("#data_" + i + " #key_3 span").text() === "undefined" || $("#data_" + i + " #key_3 span").text() === "-undefined"){
+											$("#data_" + i + " #key_3 span").text("quantum divine");										
+										}
+										console.log("DIMENSION: " + i);
+										if(i > 1) openingKeySpread(i - 1, arrDigits)
 									
 								});	
 													
@@ -268,9 +673,9 @@ table {
 }
 
 .key_holder{
-    width: 333px;
+    width: 100px;
     float: left;
-    padding: 55px;
+    padding: 33px;
 }
 
 .key{
@@ -293,14 +698,21 @@ table {
 		text-align: center;
 		width: 100%;
 		display: inline-block;
+		float: left;
 	}
 
 
+	.tarot{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
 
 		.data{ 
-			font-size: 7px;
-			width: 100%;
-			height: 100%;
+			position: absolute;		
+			font-size: 3px;
+			float: left;
 		}
 		
 		.title{
@@ -319,6 +731,89 @@ table {
 		.key{
 			float: left;
 			padding: 40px;
+			position: fixed;
+		}
+
+		.data div{
+			float: left;
+		}
+
+		#keltic_0{
+			top: 365px;
+			left: 30%;
+			z-index: 999;
+		}
+
+		#keltic_1{
+			top: 379px;
+			left: 33%;
+			z-index: 9999;
+		}
+
+		#keltic_2{	
+			top: 135px;
+			left: 30%;
+		}
+
+		#keltic_3{
+			top: 600px;
+			left: 30%;
+		}
+
+		#keltic_4{
+			top: 365px;
+			left: 21%;
+		}
+
+		#keltic_5{
+			top: 365px;
+			left: 41%;
+		}
+
+		#keltic_6{
+			left: 55%;
+			top: 777px;
+		}	
+
+		#keltic_7{
+			left: 55%;
+			top: 555px;
+		}
+
+		#keltic_8{
+			left: 55%;
+			top: 333px;
+		}
+
+		#keltic_9{
+			left: 55%;
+			top: 88px;
+		}
+
+
+		#data_1{
+			top: 365px;
+			left: 33%;
+		}
+
+		#data_2{
+			top: 77px;
+			right: 155px;
+		}
+
+		#data_3{
+			top: 77px;
+			left: 155px;
+		}
+
+		#data_4{
+			top: 633px;
+			left: 155px;
+		}
+
+		#data_5{
+			top: 633px;
+			right: 155px;
 		}
 	</style>
 	<div class="cards">
