@@ -179,7 +179,7 @@
 			})
 
 			$("#draw_key").click(function(e){
-			
+				$(".data").hide();
 				e.preventDefault()
 				openingKeySpread(1, [])
 			})
@@ -198,7 +198,7 @@
 
 			$("#draw_major_key").click(function(e){
 				e.preventDefault();
-		
+				$(".data").hide();
 				openingKeySpread(5, [])
 			})
 
@@ -252,6 +252,7 @@
 			}
 
 			function kelticCross(iterations, arrDigits){
+				$(".data").hide();
 				getData(arrDigits, function(err, data){
 					arrDigits.push(data);
 
@@ -277,6 +278,9 @@
 							//cologne workaround
 							$("#fu_master_0 #keltic_0").text("quantum divine");
 						}
+
+						$("#fu_master_0 #keltic_0").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+						$("#fu_master_0").fadeIn(1337);
 						getData(arrDigits, function(err, data){
 							arrDigits.push(data);
 							
@@ -302,6 +306,8 @@
 									$("#fu_master_1 #keltic_1 span").text("quantum divine");
 								}
 								$("#fu_master_1 #keltic_1").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+
+								$("#fu_master_1").fadeIn(1337);
 								getData(arrDigits, function(err, data){
 									
 									arrDigits.push(data);
@@ -326,6 +332,7 @@
 										}
 
 										$("#fu_master_2 #keltic_2").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+										$("#fu_master_2").fadeIn(1337);
 										getData(arrDigits, function(err, data){
 											arrDigits.push(data);
 
@@ -352,6 +359,7 @@
 													$("#fu_master_3 #keltic_3 span").text("quantum divine");
 												}
 												$("#fu_master_3 #keltic_3").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+												$("#fu_master_3").fadeIn(1337);
 
 												getData(arrDigits, function(err, data){
 													arrDigits.push(data);
@@ -378,7 +386,7 @@
 															$("#fu_master_4 #keltic_4 span").text("quantum divine");
 														}
 														$("#fu_master_4 #keltic_4").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
-
+														$("#fu_master_4").fadeIn(1337);
 														getData(arrDigits, function(err, data){
 															
 															arrDigits.push(data);
@@ -402,7 +410,7 @@
 																	$("#fu_master_5 #keltic_5 span").text("quantum divine");										
 																}
 																$("#fu_master_5 #keltic_5").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
-
+																$("#fu_master_5").fadeIn(1337);
 																getData(arrDigits, function(err, data){
 															
 																	arrDigits.push(data);
@@ -426,7 +434,7 @@
 																			$("#fu_master_6 #keltic_6 span").text("quantum divine");										
 																		}
 																		$("#fu_master_6 #keltic_6").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
-
+																		$("#fu_master_6").fadeIn(1337);
 																		getData(arrDigits, function(err, data){
 																	
 																			arrDigits.push(data);
@@ -450,7 +458,7 @@
 																					$("#fu_master_7 #keltic_7 span").text("quantum divine");										
 																				}
 																				$("#fu_master_7 #keltic_7").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
-
+																				$("#fu_master_7").fadeIn(1337);
 																				getData(arrDigits, function(err, data){
 															
 																					arrDigits.push(data);
@@ -474,7 +482,7 @@
 																							$("#fu_master_8 #keltic_8 span").text("quantum divine");										
 																						}
 																					$("#fu_master_8 #keltic_8").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 4) - 5) +'deg)'})
-
+																					$("#fu_master_8").fadeIn(1337);
 																					getData(arrDigits, function(err, data){
 															
 																						arrDigits.push(data);
@@ -499,7 +507,7 @@
 																							}
 																							$("#fu_master_9 #keltic_9").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
 
-																							
+																							$("#fu_master_9").fadeIn(1337);
 																						
 																					});	
 																				});			
@@ -537,7 +545,6 @@
 
 				console.log("TEST " + i);
 				
-				
 				//some quirk with quantum / tarot combination? 
 				getData(arrDigits, function(err, data){
 					arrDigits.push(data);
@@ -566,6 +573,7 @@
 						}
 
 						$("#data_" + i + " #key_2").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
+						$("#data_" + i).fadeIn(1337);
 						getData(arrDigits, function(err, data){
 							arrDigits.push(data);
 							
@@ -591,7 +599,7 @@
 									$("#data_" + i + " #key_1 span").text("quantum divine");
 								}
 								$("#data_" + i + " #key_1").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
-
+								$("#data_" + i).fadeIn(1337);
 								getData(arrDigits, function(err, data){
 									
 									arrDigits.push(data);
@@ -618,7 +626,7 @@
 										if(i > 1) openingKeySpread(i - 1, arrDigits)
 
 										$("#data_" + i + " #key_3").css({'transform' : 'rotate('+ (Math.floor(Math.random() * 8) - 8) +'deg)'})
-									
+										$("#data_" + i).fadeIn(1337);
 								});	
 													
 					
