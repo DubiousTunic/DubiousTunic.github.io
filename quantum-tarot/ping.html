@@ -17,6 +17,7 @@
 	</div>
 	<br>
 	<div class="tarot">
+		<div class="US_container">
 		<div class="data" id="fu_master_0">	
 			<div class="key_holder">	
 				<div id="keltic_0" class="key"></div>
@@ -68,7 +69,7 @@
 			</div>
 		</div>
 
-		
+		</div>
 
 			<div class="data" id="data_2"><
 				<div class="key_holder">	
@@ -170,22 +171,26 @@
 			})
 
 			$("#draw_key").click(function(e){
+			
 				e.preventDefault()
 				openingKeySpread(1, [])
 			})
 
 			$("#draw_one").click(function(e){
 				e.preventDefault();
+				
 				oneCardSpread();
 			})
 
 			$("#keltic_cross").click(function(e){
 				e.preventDefault();
+				
 				kelticCross(1, [])
 			})
 
 			$("#draw_major_key").click(function(e){
 				e.preventDefault();
+		
 				openingKeySpread(5, [])
 			})
 
@@ -706,7 +711,7 @@ table {
 		margin: 0 auto;
 		width: 90%;
 		margin-left: 5%;
-		height: 81%;
+		height: 96%;
 		position: absolute;
 		border: 5px solid #abcdba;
 
@@ -730,6 +735,11 @@ table {
 		.front_ul li{
 			padding: 15px;
 			float: left;
+		}
+
+		.US_container{
+			position: relative;
+			top: -155px;
 		}
 
 		body{
