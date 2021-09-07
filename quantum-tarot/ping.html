@@ -17,52 +17,52 @@
 	</div>
 	<br>
 	<div class="tarot">
-		<div class="data">	
+		<div class="data" id="fu_master_0">	
 			<div class="key_holder">	
 				<div id="keltic_0" class="key"></div>
 			</div>
 		</div>
-		<div class="data">	
+		<div class="data" id="fu_master_1">	
 			<div class="key_holder">	
 				<div id="keltic_1" class="key"></div>
 			</div>
 		</div>
-		<div class="data">	
+		<div class="data" id="fu_master_2">	
 			<div class="key_holder">	
 				<div id="keltic_2" class="key"></div>
 			</div>
 		</div>
-		<div class="data">	
+		<div class="data" id="fu_master_3">	
 			<div class="key_holder">	
 				<div id="keltic_3" class="key"></div>
 			</div>
 		</div>
-		<div class="data">	
+		<div class="data" id="fu_master_4">	
 			<div class="key_holder">	
 				<div id="keltic_4" class="key"></div>
 			</div>
 		</div>
-		<div class="data">	
+		<div class="data" id="fu_master_5">	
 			<div class="key_holder">	
 				<div id="keltic_5" class="key"></div>
 			</div>
 		</div>
-		<div class="data">	
+		<div class="data" id="fu_master_6">	
 			<div class="key_holder">	
 				<div id="keltic_6" class="key"></div>
 			</div>
 		</div>
-		<div class="data">	
+		<div class="data" id="fu_master_7">	
 			<div class="key_holder">	
 				<div id="keltic_7" class="key"></div>
 			</div>
 		</div>
-		<div class="data">	
+		<div class="data" id="fu_master_8">	
 			<div class="key_holder">	
 				<div id="keltic_8" class="key"></div>
 			</div>
 		</div>
-		<div class="data">	
+		<div class="data" id="fu_master_9">	
 			<div class="key_holder">	
 				<div id="keltic_9" class="key"></div>
 			</div>
@@ -240,7 +240,7 @@
 					arrDigits.push(data);
 
 						//nonquantum upsidedown technically reverses structure of quantum computing
-						$("#tarot_" + data).appendTo($("#keltic_0"));
+						$("#tarot_" + data).appendTo($("#fu_master_0 #keltic_0"));
 
 						var upsidedown = Math.floor(Math.random() * 1);
 						if(upsidedown) flip($("#tarot_" +data));
@@ -251,20 +251,20 @@
 					
 						//$("#key_2").append(arrDigits[0]);
 						if(upsidedown === -1){
-							$("#keltic_0").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+							$("#fu_master_0 #keltic_0").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 						}
 						else{
-							$("#keltic_0").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+							$("#fu_master_0 #keltic_0").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 						}
-						$("#keltic_0").fadeIn(1000);
-						if($("#keltic_0").text() === "undefined" || $("#keltic_0 span").text() === "-undefined"){
+						$("#fu_master_0 #keltic_0").fadeIn(1000);
+						if($("#fu_master_0 #keltic_0").text() === "undefined" || $("#fu_master_0 #keltic_0 span").text() === "-undefined"){
 							//cologne workaround
-							$("#keltic_0").text("quantum divine");
+							$("#fu_master_0 keltic_0").text("quantum divine");
 						}
 						getData(arrDigits, function(err, data){
 							arrDigits.push(data);
 							
-								$("#tarot_" + data).appendTo($("#keltic_1"));
+								$("#tarot_" + data).appendTo($("#fu_master_1 #keltic_1"));
 								var upsidedown = Math.floor(Math.random() * 2);
 								if(upsidedown) flip($("#tarot_" +data));
 								console.log(upsidedown);
@@ -274,22 +274,22 @@
 								//$("#key_1").append(arrDigits[1]);
 
 								if(upsidedown === -1){
-									$("#keltic_1").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");	
+									$("#fu_master_1 #keltic_1").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");	
 								}
 								else{
-									$("#keltic_1").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");	
+									$("#fu_master_1 #keltic_1").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");	
 								}
-								$("#keltic_1").fadeIn(1000);
-								if($("#keltic_1 span").text() === "undefined" || $("#keltic_1 span").text() === "-undefined"){
+								$("#fu_master_1 #keltic_1").fadeIn(1000);
+								if($("#fu_master_1 #keltic_1 span").text() === "undefined" || $("#fu_master_1 #keltic_1 span").text() === "-undefined"){
 
 									//cologne workaround
-									$("#keltic_1 span").text("quantum divine");
+									$("#fu_master_1 #keltic_1 span").text("quantum divine");
 								}
 								getData(arrDigits, function(err, data){
 									
 									arrDigits.push(data);
 									
-										$("#tarot_" + data).appendTo($("#keltic_2"));
+										$("#tarot_" + data).appendTo($("#fu_master_2 #keltic_2"));
 										var upsidedown = Math.floor(Math.random() * 1);
 										if(upsidedown) flip($("#tarot_" +data));
 										console.log(upsidedown);
@@ -298,20 +298,20 @@
 										}
 										//$("#key_3").append(arrDigits[2]);
 										if(upsidedown === -1){
-											$("#keltic_2").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+											$("#fu_master_2 #keltic_2").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 										}
 										else{
-											$("#keltic_2").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+											$("#fu_master_2 #keltic_2").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 										}
-										$("#keltic_2").fadeIn(1000);
-										if($("#keltic_2 span").text() === "undefined" || $("#keltic_2 span").text() === "-undefined"){
-											$("#keltic_2 span").text("quantum divine");										
+										$("#fu_master_2 #keltic_2").fadeIn(1000);
+										if($("#fu_master_2 #keltic_2 span").text() === "undefined" || $("#fu_master_2 #keltic_2 span").text() === "-undefined"){
+											$("#fu_master_2 #keltic_2 span").text("quantum divine");										
 										}
 										getData(arrDigits, function(err, data){
 											arrDigits.push(data);
 
 												//nonquantum upsidedown technically reverses structure of quantum computing
-												$("#tarot_" + data).appendTo($("#keltic_3"));
+												$("#tarot_" + data).appendTo($("#fu_master_3 #keltic_3"));
 
 												var upsidedown = Math.floor(Math.random() * 1);
 												if(upsidedown) flip($("#tarot_" +data));
@@ -322,20 +322,20 @@
 											
 												//$("#key_2").append(arrDigits[0]);
 												if(upsidedown === -1){
-													$("#keltic_3").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+													$("#fu_master_3 #keltic_3").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 												}
 												else{
-													$("#keltic_3").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+													$("#fu_master_3 #keltic_3").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 												}
-												$("#keltic_3").fadeIn(1000);
-												if($("#keltic_3 span").text() === "undefined" || $("#keltic_4 span").text() === "-undefined"){
+												$("#fu_master_3 #keltic_3").fadeIn(1000);
+												if($("#fu_master_3 #keltic_3 span").text() === "undefined" || $("#keltic_4 span").text() === "-undefined"){
 													//cologne workaround
-													$("#keltic_3 span").text("quantum divine");
+													$("#fu_master_3 #keltic_3 span").text("quantum divine");
 												}
 												getData(arrDigits, function(err, data){
 													arrDigits.push(data);
 													
-														$("#tarot_" + data).appendTo($("#keltic_4"));
+														$("#tarot_" + data).appendTo($("#fu_master_4 #keltic_4"));
 														var upsidedown = Math.floor(Math.random() * 2);
 														if(upsidedown) flip($("#tarot_" +data));
 														console.log(upsidedown);
@@ -345,22 +345,22 @@
 														//$("#key_1").append(arrDigits[1]);
 
 														if(upsidedown === -1){
-															$("#keltic_4").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");	
+															$("#fu_master_4 #keltic_4").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");	
 														}
 														else{
-															$("#keltic_4").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");	
+															$("#fu_master_4 #keltic_4").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");	
 														}
-														$("#keltic_4").fadeIn(1000);
-														if($("#keltic_4 span").text() === "undefined" || $("#keltic_4 span").text() === "-undefined"){
+														$("#fu_master_4 #keltic_4").fadeIn(1000);
+														if($("#fu_master_4 #keltic_4 span").text() === "undefined" || $("#keltic_4 span").text() === "-undefined"){
 
 															//cologne workaround
-															$("#keltic_4 span").text("quantum divine");
+															$("#fu_master_4 #keltic_4 span").text("quantum divine");
 														}
 														getData(arrDigits, function(err, data){
 															
 															arrDigits.push(data);
 															
-																$("#tarot_" + data).appendTo($("#keltic_5"));
+																$("#tarot_" + data).appendTo($("#fu_master_5 #keltic_5"));
 																var upsidedown = Math.floor(Math.random() * 1);
 																if(upsidedown) flip($("#tarot_" +data));
 																console.log(upsidedown);
@@ -369,14 +369,14 @@
 																}
 																//$("#key_3").append(arrDigits[2]);
 																if(upsidedown === -1){
-																	$("#keltic_5").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																	$("#fu_master_5 #keltic_5").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 																}
 																else{
-																	$("#keltic_5").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																	$("#fu_master_5 #keltic_5").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 																}
-																$("#keltic_5").fadeIn(1000);
-																if($("#keltic_5 span").text() === "undefined" || $("#keltic_5 span").text() === "-undefined"){
-																	$("#keltic_5 span").text("quantum divine");										
+																$("#fu_master_5 #keltic_5").fadeIn(1000);
+																if($("#fu_master_5 #keltic_5 span").text() === "undefined" || $("#fu_master_5 #keltic_5 span").text() === "-undefined"){
+																	$("#fu_master_5 #keltic_5 span").text("quantum divine");										
 																}
 																getData(arrDigits, function(err, data){
 															
@@ -391,14 +391,14 @@
 																		}
 																		//$("#key_3").append(arrDigits[2]);
 																		if(upsidedown === -1){
-																			$("#keltic_6").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																			$("#fu_master_6 #keltic_6").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 																		}
 																		else{
-																			$("#keltic_6").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																			$("#fu_master_6 #keltic_6").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 																		}
-																		$("#keltic_6").fadeIn(1000);
-																		if($("#keltic_6 span").text() === "undefined" || $("#keltic_6 span").text() === "-undefined"){
-																			$("#keltic_6 span").text("quantum divine");										
+																		$("#fu_master_6 #keltic_6").fadeIn(1000);
+																		if($("#fu_master_6 #keltic_6 span").text() === "undefined" || $("#fu_master_6 #keltic_6 span").text() === "-undefined"){
+																			$("#fu_master_6 #keltic_6 span").text("quantum divine");										
 																		}
 																		getData(arrDigits, function(err, data){
 																	
@@ -413,20 +413,20 @@
 																				}
 																				//$("#key_3").append(arrDigits[2]);
 																				if(upsidedown === -1){
-																					$("#keltic_7").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																					$("#fu_master_7 #keltic_7").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 																				}
 																				else{
-																					$("#keltic_7").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																					$("#fu_master_7 #keltic_7").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 																				}
-																				$("#keltic_7").fadeIn(1000);
-																				if($("#keltic_7 span").text() === "undefined" || $("#keltic_7 span").text() === "-undefined"){
-																					$("#keltic_7 span").text("quantum divine");										
+																				$("#fu_master_7 #keltic_7").fadeIn(1000);
+																				if($("#fu_master_7 #keltic_7 span").text() === "undefined" || $("#fu_master_7 #keltic_7 span").text() === "-undefined"){
+																					$("#fu_master_7 #keltic_7 span").text("quantum divine");										
 																				}
 																				getData(arrDigits, function(err, data){
 															
 																					arrDigits.push(data);
 																					
-																						$("#tarot_" + data).appendTo($("#keltic_8"));
+																						$("#tarot_" + data).appendTo($("#fu_master_8 #keltic_8"));
 																						var upsidedown = Math.floor(Math.random() * 1);
 																						if(upsidedown) flip($("#tarot_" +data));
 																						console.log(upsidedown);
@@ -435,20 +435,20 @@
 																						}
 																						//$("#key_3").append(arrDigits[2]);
 																						if(upsidedown === -1){
-																							$("#keltic_8").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																							$("#fu_master_8 #keltic_8").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 																						}
 																						else{
-																							$("#keltic_8").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																							$("#fu_master_8 #keltic_8").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 																						}
-																						$("#keltic_8").fadeIn(1000);
-																						if($("#keltic_8 span").text() === "undefined" || $("#keltic_8 span").text() === "-undefined"){
-																							$("#keltic_8 span").text("quantum divine");										
+																						$("#fu_master_8 #keltic_8").fadeIn(1000);
+																						if($("#fu_master_8 #keltic_8 span").text() === "undefined" || $("#fu_master_8 #keltic_8 span").text() === "-undefined"){
+																							$("#fu_master_8 #keltic_8 span").text("quantum divine");										
 																						}
 																					getData(arrDigits, function(err, data){
 															
 																						arrDigits.push(data);
 																						
-																							$("#tarot_" + data).appendTo($("#keltic_9"));
+																							$("#tarot_" + data).appendTo($("#fu_master_9 #keltic_9"));
 																							var upsidedown = Math.floor(Math.random() * 1);
 																							if(upsidedown) flip($("#tarot_" +data));
 																							console.log(upsidedown);
@@ -457,14 +457,14 @@
 																							}
 																							//$("#key_3").append(arrDigits[2]);
 																							if(upsidedown === -1){
-																								$("#keltic_9").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
+																								$("#fu_master_9 #keltic_9").append("<span class='title'>" + "-" + $("#tarot_" + data).attr("class") + "</class>");
 																							}
 																							else{
-																								$("#keltic_9").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
+																								$("#fu_master_9 #keltic_9").append("<span class='title'>" + $("#tarot_" + data).attr("class") + "</class>");
 																							}
-																							$("#keltic_9").fadeIn(1000);
-																							if($("#keltic_9 span").text() === "undefined" || $("#keltic_9 span").text() === "-undefined"){
-																								$("#keltic_9 span").text("quantum divine");										
+																							$("#fu_master_9 #keltic_9").fadeIn(1000);
+																							if($("#fu_master_9 #keltic_9 span").text() === "undefined" || $("#fu_master_9 keltic_9 span").text() === "-undefined"){
+																								$("#fu_master_9 #keltic_9 span").text("quantum divine");										
 																							}
 																							
 																						
@@ -709,6 +709,7 @@ table {
 		height: 81%;
 		position: absolute;
 		border: 5px solid #abcdba;
+
 	}
 
 	h1{
@@ -738,61 +739,61 @@ table {
 		.key{
 			float: left;
 			padding: 40px;
-			position: fixed;
+			position: relative;
 		}
 
 		.data div{
 			float: left;
 		}
 
-		#keltic_0{
+		#fu_master_0{
 			top: 365px;
 			left: 30%;
 			z-index: 999;
 		}
 
-		#keltic_1{
+		#fu_master_1{
 			top: 379px;
 			left: 33%;
 			z-index: 9999;
 		}
 
-		#keltic_2{	
+		#fu_master_2{	
 			top: 135px;
 			left: 30%;
 		}
 
-		#keltic_3{
+		#fu_master_3{
 			top: 600px;
 			left: 30%;
 		}
 
-		#keltic_4{
+		#fu_master_4{
 			top: 365px;
 			left: 21%;
 		}
 
-		#keltic_5{
+		#fu_master_5{
 			top: 365px;
 			left: 41%;
 		}
 
-		#keltic_6{
+		#fu_master_6{
 			left: 55%;
 			top: 777px;
 		}	
 
-		#keltic_7{
+		#fu_master_7{
 			left: 55%;
 			top: 555px;
 		}
 
-		#keltic_8{
+		#fu_master_8{
 			left: 55%;
 			top: 333px;
 		}
 
-		#keltic_9{
+		#fu_master_9{
 			left: 55%;
 			top: 88px;
 		}
