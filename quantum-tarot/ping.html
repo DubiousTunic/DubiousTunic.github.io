@@ -9,7 +9,7 @@
 </header>
 <body>
 	<br>
-	<ul class="front_ul"><li><a class="draw_tarot" id="draw_one" href="#">One Card Spread</a></li><li><a class="draw_tarot" id="keltic_cross" href="#">Keltic Cross</a></li><li><a class="draw_tarot" id="draw_key" href="#">Trinity Spread</a></li><li><a class="draw_tarot" id="draw_major_key" href="#">Opening of the Key Spread</a></li><li><a id="draw_iching" href="#">IChing reading</a><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></li></ul>
+	<ul class="front_ul"><li><a class="draw_tarot" id="draw_one" href="#">One Card Spread</a></li><li><a class="draw_tarot" id="keltic_cross" href="#">Keltic Cross</a></li><li><a class="draw_tarot" id="draw_key" href="#">Trinity Spread</a></li><li><a class="draw_tarot" id="draw_major_key" href="#">Opening of the Key Spread</a></li><li><a id="draw_iching" href="#">IChing reading</a></li><li><a class="draw8 8ball" href="#">8BALL</a></li><li><a href="#" class="draw_fin_8 8ball">Financial 8BALL</a></li><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></ul>
 	<br>
 	<h2 class="quantum_shift"></h2>
 	<br>
@@ -20,6 +20,7 @@
 		<!--washington !-->
 		<span>Quantum Divine makes an inline call to a Quantum Computer to render Iching and Tarot (ascii) from a single HTML page.</span> 
 	</div>
+	<span id="ball_fu_slave"></span>
 	<br>
 	<div class="tarot">
 		<div class="US_container">
@@ -153,23 +154,86 @@ function beep() {
 
 	},Math.floor(Math.random() * 1337))
 }
+//init quantum magick
+function magick8ball(finance){
+	var messages; 
+	if(finance){
+		messages = [
+		"Bear Market Ahead", "Bull Market Ahead", "Buy Now", "Buy Pork Bellies", "Buy Real Estate", "Buy T-Bills", "Change Brokers", "Don't Buy on Margin", "Go for It", "One Word: Plastics, Out to Lunch", "Pay Off Loans First", "Ride it Out", "Sell Half Now", "Sell Now", "Sell Real Estate", "Start Own Business", "Tech Stocks Hot", "Think Precious Metals", "Unclear Ask Again" 
+		]
+	}
+	else{
+		messages = [
+		"As I See It Yes", "Ask Again Later", "Better Not Tell You Now", "Cannot Predict Now", "Concentrate and Ask Again", "Don't Count On It", "It Is Certain", "It Is Decidely So", "Most Likely", "My Reply Is No", "My Sources Say No", "Outlook Good", "Outlook Not So Good", "Reply Hazy Try Again", "Signs Point to Yes", "Very Doubtful", "Without A Doubt", "Yes", "Yes - Definitely", "You May Rely On It", "Absolutely", "Answer Unclear Ask Later", "Cannot Foretell Now", "Can't Say Now", "Chances Aren't Good", "Consult Me Later", "Don't Bet On It", "Focus And Ask Again", "Indications Say Yes", "Looks Like Yes", "No", "No Doubt About It", "Positively", "Prospect Good", "So It Shall Be", "The Stars Say No", "Unlikely", "Very Likely", "Yes", "You Can Count On It"     
+		]
+	}
 
+	ballData(messages.length - 1, function(err, dat){
+		//the qrng number is used as the index of the messages arr
+		$("#ball_fu_slave").text(messages[dat]);
+	})
+
+}
+
+	//regicide
+	function ballData(len, cb){
+		$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8", function(data){
+			var dat = data.data[0];
+			console.log(dat)
+
+			//console.log(data);
+
+			//if the returned number is less than the array of messages size
+			//jas((mean))
+			if(dat <= len){	
+				//then we return this number in a cb
+				cb(null, dat);
+			}
+			else{			
+				//not my fault if i stress their systems they should let me plug in a range!		
+				ballData(len, cb);						
+			}
+		})
+	}	
+
+
+			//God is a Succession of Kings
+			$(".8ball").click(function(e){
+				e.preventDefault();
+				$(".intro").hide();
+				$(".tarot").hide();
+				$(".iching").hide();
+				$("#ball_fu_slave").empty();
+				$("#ball_fu_slave").fadeIn();				
+			})
+
+			$(".draw8").click(function(e){
+				magick8ball(false);
+			})
+
+			//jesus is mean
+			$(".draw_fin_8").click(function(e){
+				magick8ball(true);
+			})
 
 			$("#home").click(function(e){
 				e.preventDefault();
 				$(".tarot").hide();
 				$(".iching").hide();
-				$(".intro").show();
+				$("#ball_fu_slave").hide();
+				$(".intro").fadeIn();
 			})
 
 			//the father shrank my ears over 3 years just to mess with my current relationship with Japanese
 			//the error seems to happen when a number repeats from a previous iteration
+
 			$(".draw_tarot").click(function(e){
 				console.log("tarot click");
 				$(".intro").hide();
 				$(".iching").hide();
 				$(".key").empty();
 				$(".tarot").show();
+				$("#ball_fu_slave").hide();
 				e.preventDefault();
 				$(".quantum-shift").text("Draw Tarot");
 				
@@ -181,6 +245,7 @@ function beep() {
 				$(".tarot").hide();
 				$(".iching_data").empty();
 				$(".iching").show();
+				$("#ball_fu_slave").hide();
 				e.preventDefault();
 				$(".quantum-shift").text("Draw IChing");
 				iching(function(err, data){
@@ -238,6 +303,7 @@ function beep() {
 						//nonquantum upsidedown technically reverses structure of quantum computing
 						$("#tarot_" + data).appendTo($("#data_1 #key_2"));
 						//USSS wobble
+						//right spin
 						var upsidedown = Math.floor(Math.random() * 1);
 						if(upsidedown) flip($("#tarot_" +data));
 						console.log(upsidedown);
@@ -739,6 +805,11 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+#ball_fu_slave{
+	font-size: 24px;
+	padding: 24px;
 }
 
 .hitCounter{
