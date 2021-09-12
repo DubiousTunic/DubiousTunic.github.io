@@ -9,7 +9,7 @@
 </header>
 <body>
 	<br>
-	<ul class="front_ul"><li><a class="draw_tarot" id="draw_one" href="#">One Card Spread</a></li><li><a class="draw_tarot" id="keltic_cross" href="#">Keltic Cross</a></li><li><a class="draw_tarot" id="draw_key" href="#">Trinity Spread</a></li><li><a class="draw_tarot" id="draw_major_key" href="#">Opening of the Key Spread</a></li><li><a id="draw_iching" href="#">IChing reading</a></li><li><a href="#" id="draw_geomancy">Geomancy</a></li><li><a class="draw8 8ball" href="#">8BALL</a></li><li><a href="#" class="draw_fin_8 8ball">Financial 8BALL</a></li><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></ul>
+	<ul class="front_ul"><li><a href="#" class="uint16">uint16</a></li><li><a class="draw_tarot" id="draw_one" href="#">One Card Spread</a></li><li><a class="draw_tarot" id="keltic_cross" href="#">Keltic Cross</a></li><li><a class="draw_tarot" id="draw_key" href="#">Trinity Spread</a></li><li><a class="draw_tarot" id="draw_major_key" href="#">Opening of the Key Spread</a></li><li><a id="draw_iching" href="#">IChing reading</a></li><li><a href="#" id="draw_geomancy">Geomance</a></li><li><a class="draw8 8ball" href="#">8BALL</a></li><li><a href="#" class="draw_fin_8 8ball">Financial 8BALL</a></li><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></ul>
 	<br>
 	<h2 class="quantum_shift"></h2>
 	<br>
@@ -159,6 +159,24 @@ function beep() {
 
 	},Math.floor(Math.random() * 1337))
 }
+
+//"okay so he does have some ability to program"
+//you jews are fetishizing the math
+//async is real programming
+function uint16(){
+	$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint16&size=16", function(data){
+		var dat = data.data[0];
+
+		//console.log(data);
+
+		//if the returned number is less than the array of messages size
+		//jas((mean))
+
+		$("#uint16_holder").append(dat);
+		beep();
+	})
+}
+
 //init quantum magick
 function magick8ball(finance){
 	var messages; 
@@ -180,7 +198,7 @@ function magick8ball(finance){
 	})
 
 }
-
+	//GOLDEN AGE
 	//regicide
 	function ballData(len, cb){
 		$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8", function(data){
@@ -235,11 +253,14 @@ function magick8ball(finance){
 				var dat = data.data[0]%16;
 				//nice use of modulo
 				//((homo))
-
+				//sword_44
+				//cypher_6
+				beep();
 				$("#geoReading").append("<img src='" + figures[dat].hyperlink + "'></img><br><br>");
 				setTimeout(function(){
 					$("#geoReading").append(figures[dat].latin + "<br><br>");
 					$("#geoReading").append(figures[dat].english);
+					beep();
 				}, 777)
 				
 				//this is how they came up with "hyperlink"
@@ -256,8 +277,18 @@ function magick8ball(finance){
 			$(".tarot").fadeOut(777);
 			$(".iching").fadeOut(777);
 			$("#geoReading").fadeOut(777);
-
+			$("#uint16_holder").fadeOut(777);
 			$("#ball_fu_slave").fadeOut(777);
+
+			$(".uint16").click(function(e){
+				e.preventDefault();
+				$(".intro").fadeOut(777);
+				$(".tarot").fadeOut(777);
+				$(".iching").fadeOut(777);
+				$("#ball_fu_slave").fadeOut(777);
+				$("#uint16_holder").fadeIn(808);
+				uint16();
+			})
 
 			$("#draw_geomancy").click(function(e){
 				e.preventDefault();
@@ -265,6 +296,7 @@ function magick8ball(finance){
 				$(".tarot").fadeOut(777);
 				$(".iching").fadeOut(777);
 				$("#ball_fu_slave").fadeOut(777);
+				$("#uint16_holder").fadeOut(777);
 				$("#geoReading").empty();
 				$("#geoReading").fadeIn(777);
 				geomanceMaester()
@@ -276,6 +308,7 @@ function magick8ball(finance){
 				$(".intro").fadeOut(777);
 				$(".tarot").fadeOut(777);
 				$(".iching").fadeOut(777);
+				$("#uint16_holder").fadeOut(777);
 				$("#geoReading").fadeOut(777);
 				$("#ball_fu_slave").empty();
 				$("#ball_fu_slave").fadeIn();				
@@ -295,7 +328,7 @@ function magick8ball(finance){
 				$(".tarot").fadeOut(777);
 				$(".iching").fadeOut(777);
 				$("#geoReading").fadeOut(777);
-
+				$("#uint16_holder").fadeOut(777);
 				$("#ball_fu_slave").fadeOut(777);
 				$(".intro").fadeIn();
 			})
@@ -310,7 +343,9 @@ function magick8ball(finance){
 				$(".key").empty();
 				$(".tarot").show();
 				$("#geoReading").fadeOut(777);
-
+				//((USSS))
+				//buh-bye
+				$("#uint16_holder").fadeOut(777);
 				$("#ball_fu_slave").fadeOut(777);
 				e.preventDefault();
 				$(".quantum-shift").text("Draw Tarot");
