@@ -9,7 +9,7 @@
 </header>
 <body>
 	<br>
-	<ul class="front_ul"><li><a class="draw_tarot" id="draw_one" href="#">One Card Spread</a></li><li><a class="draw_tarot" id="keltic_cross" href="#">Keltic Cross</a></li><li><a class="draw_tarot" id="draw_key" href="#">Trinity Spread</a></li><li><a class="draw_tarot" id="draw_major_key" href="#">Opening of the Key Spread</a></li><li><a id="draw_iching" href="#">IChing reading</a></li><li><a class="draw8 8ball" href="#">8BALL</a></li><li><a href="#" class="draw_fin_8 8ball">Financial 8BALL</a></li><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></ul>
+	<ul class="front_ul"><li><a class="draw_tarot" id="draw_one" href="#">One Card Spread</a></li><li><a class="draw_tarot" id="keltic_cross" href="#">Keltic Cross</a></li><li><a class="draw_tarot" id="draw_key" href="#">Trinity Spread</a></li><li><a class="draw_tarot" id="draw_major_key" href="#">Opening of the Key Spread</a></li><li><a id="draw_iching" href="#">IChing reading</a></li><li><a href="#" id="draw_geomancy">Geomancy</a></li><li><a class="draw8 8ball" href="#">8BALL</a></li><li><a href="#" class="draw_fin_8 8ball">Financial 8BALL</a></li><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></ul>
 	<br>
 	<h2 class="quantum_shift"></h2>
 	<br>
@@ -21,6 +21,10 @@
 		<span>Quantum Divine makes an inline call to a Quantum Computer to render Iching and Tarot (ascii) from a single HTML page.</span> 
 	</div>
 	<span id="ball_fu_slave"></span>
+	<!-- ass festival !-->
+	<div id="geoReading">
+			
+	</div>
 	<br>
 	<div class="tarot">
 		<div class="US_container">
@@ -171,6 +175,7 @@ function magick8ball(finance){
 	ballData(messages.length - 1, function(err, dat){
 		//the qrng number is used as the index of the messages arr
 		$("#ball_fu_slave").text(messages[dat]);
+		beep();
 	})
 
 }
@@ -196,13 +201,74 @@ function magick8ball(finance){
 		})
 	}	
 
+		//this is how oracle thought of asynchronous programming
+		//Number
+		function geomanceMaester(){
+			//cypher_4
+			//US Games Systems, Incorporated
+			var figures = [{ "latin" : "Via", "english" : "The Way", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Geomantic_via.svg/40px-Geomantic_via.svg.png"},
+			{ "latin" : "Cauda draconis", "english" : "the Tail of the Dragon", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Geomantic_caudadraconis.svg/40px-Geomantic_caudadraconis.svg.png" },
+			{ "latin" : "Puer", "english" : "the Boy", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Geomantic_puer.svg/40px-Geomantic_puer.svg.png"},
+			{ "latin" : "Fortuna minor", "english" : "Lesser Fortune", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Geomantic_fortunaminor.svg/40px-Geomantic_fortunaminor.svg.png"},
+			{ "latin" : "Puella", "english" : "The girl", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Geomantic_puella.svg/40px-Geomantic_puella.svg.png"},
+			{ "latin" : "Amissio", "english" : "Loss", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Geomantic_amissio.svg/40px-Geomantic_amissio.svg.png"},
+			//the prison
+			{ "latin" : "Carcer", "english" : "The Prison", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Geomantic_carcer.svg/40px-Geomantic_carcer.svg.png"},
+			{ "latin" : "Laetitia", "english" : "Joy", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Geomantic_laetitia.svg/40px-Geomantic_laetitia.svg.png"},
+			{ "latin" : "Caput Draconis", "english" : "The Head of the Dragon", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Geomantic_caputdraconis.svg/40px-Geomantic_caputdraconis.svg.png"},
+
+			{ "latin" : "Conjunctio", "english" : "Conjunction", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Geomantic_conjunctio.svg/40px-Geomantic_conjunctio.svg.png"},
+			{ "latin" : "Acquisitio", "english" : "Acquisition", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Geomantic_acquisitio.svg/40px-Geomantic_acquisitio.svg.png"},
+			{ "latin" : "Rubeus", "english" : "red", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Geomantic_rubeus.svg/40px-Geomantic_rubeus.svg.png"},
+			{ "latin" : "Fortuna Major", "english" : "Major Fortune", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Geomantic_fortunamajor.svg/40px-Geomantic_fortunamajor.svg.png"},
+			//Peregrine headmaster
+			{ "latin" : "Albus", "english" : "white", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Geomantic_albus.svg/40px-Geomantic_albus.svg.png"},
+			//Albus Populus Caudus draconus
+			{ "latin" : "Tristitia", "english" : "Sorrow", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Geomantic_tristitia.svg/40px-Geomantic_tristitia.svg.png"},
+			//((no Aryan))
+			{ "latin" : "Populus", "english": "The People", "hyperlink" : "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Geomantic_populus.svg/40px-Geomantic_populus.svg.png"}
+			//tzoah rotachot 
+			]   
+
+			$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8", function(data){
+				var dat = data.data[0]%16;
+				//nice use of modulo
+				//((homo))
+
+				$("#geoReading").append("<img src='" + figures[dat].hyperlink + "'></img><br><br>");
+				setTimeout(function(){
+					$("#geoReading").append(figures[dat].latin + "<br><br>");
+					$("#geoReading").append(figures[dat].english);
+				}, 777)
+				
+				//this is how they came up with "hyperlink"
+				//holy mother russia
+				//cypher_5
+
+				//assassinate the prescient
+				//if the returned number is less than the array of messages size
+				//jas((mean))
+				
+			})
+		}
+
+		
+
+			$("#draw_geomancy").click(function(e){
+				e.preventDefault();
+				$(".intro").fadeOut(777);
+				$(".tarot").fadeOut(777);
+				$(".iching").fadeOut(777);
+				$("#ball_fu_slave").fadeOut(777);
+				geomanceMaester()
+			})
 
 			//God is a Succession of Kings
 			$(".8ball").click(function(e){
 				e.preventDefault();
-				$(".intro").hide();
-				$(".tarot").hide();
-				$(".iching").hide();
+				$(".intro").fadeOut(777);
+				$(".tarot").fadeOut(777);
+				$(".iching").fadeOut(777);
 				$("#ball_fu_slave").empty();
 				$("#ball_fu_slave").fadeIn();				
 			})
@@ -218,9 +284,9 @@ function magick8ball(finance){
 
 			$("#home").click(function(e){
 				e.preventDefault();
-				$(".tarot").hide();
-				$(".iching").hide();
-				$("#ball_fu_slave").hide();
+				$(".tarot").fadeOut(777);
+				$(".iching").fadeOut(777);
+				$("#ball_fu_slave").fadeOut(777);
 				$(".intro").fadeIn();
 			})
 
@@ -229,11 +295,11 @@ function magick8ball(finance){
 
 			$(".draw_tarot").click(function(e){
 				console.log("tarot click");
-				$(".intro").hide();
-				$(".iching").hide();
+				$(".intro").fadeOut(777);
+				$(".iching").fadeOut(777);
 				$(".key").empty();
 				$(".tarot").show();
-				$("#ball_fu_slave").hide();
+				$("#ball_fu_slave").fadeOut(777);
 				e.preventDefault();
 				$(".quantum-shift").text("Draw Tarot");
 				
@@ -241,11 +307,11 @@ function magick8ball(finance){
 
 			//please understand
 			$("#draw_iching").click(function(e){
-				$(".intro").hide()
-				$(".tarot").hide();
+				$(".intro").fadeOut(777)
+				$(".tarot").fadeOut(777);
 				$(".iching_data").empty();
 				$(".iching").show();
-				$("#ball_fu_slave").hide();
+				$("#ball_fu_slave").fadeOut(777);
 				e.preventDefault();
 				$(".quantum-shift").text("Draw IChing");
 				iching(function(err, data){
@@ -254,7 +320,7 @@ function magick8ball(finance){
 			})
 
 			$("#draw_key").click(function(e){
-				$(".data").hide();
+				$(".data").fadeOut(777);
 				e.preventDefault()
 				openingKeySpread(1, [])
 			})
@@ -273,7 +339,7 @@ function magick8ball(finance){
 
 			$("#draw_major_key").click(function(e){
 				e.preventDefault();
-				$(".data").hide();
+				$(".data").fadeOut(777);
 				openingKeySpread(5, [])
 			})
 
@@ -287,7 +353,7 @@ function magick8ball(finance){
     57: '䷊ \n\n\nTHAI: The due order of things; we see, in sum,\ngood fortune, small things gone, and great things come.\n\n\nPull up one stalk; and others follow it.\nSeek patience, self reliance, love and wit.\nThough all things change, rejoice; for that is writ.\nCall friends to help thee, they may bring thee through.\nRemember what Ti Yi thought right and true.\nThe city’s fallen; there\'s little thou canst do. ', 58: '䷙ \n\n\nTA KHU: The great accumulation; quit\nthy private virtue when state needeth it.\n\n\nPeril; move not, but look within thine heart.\nThen, with due care, be ready for the start.\nNow, with good horse, well trained, play hard thy part!\nBlock even the young bull’s horns! He’s safer so.\nCastrate the boar — its teeth will gently show.\nThen rule the stars — good fortune aid thine art! ', 59: '䷄ \n\n\nHSU: Patience; be sincere; success will gleam\nFirmness brings fortune, thou mayest cross the stream.\nWait, constant, in the border of the land.\nWait, slandered, by the mountain torrents sand.\nAh! Shun its mud, or mischief is at hand.\nStill wait, midst blood. Forth from cavern hie!\nStill wait, at festival — Oh firmly stand.\nThree guests come helping; greet them courteously. ', 60: '䷈ \n\n\nHSIAO CHU: Shows small restraint. Hence quick success.\nBut clouds indeed, we ask rain’s happiness.\n\n\nStrayed — Come thou back and follow thy own plan!\nBy true attraction mete thy starry span!\nAnger in wedlock or a car en panne!\nBloodshed and woe sincerity bids go.\nSincerity: Here’s help from all the clan.\nWho wins too much may lose! Repose, O man! ', 61: '䷡ \n\n\nTA KWANG: Great strength. Be firm and self-reliant;\nBut — tyrannous to use it like a giant!\n\n\nPlant firm thy feet, but dare not yet to move!\nThy firm correctness exercise and prove.\nFences entangle rams who blindly shove.\nStrength fails to force some gates that yield to love.\nThine purpose gained, relax — nor tax thine heart so;\nOnce tangled, the best chance is — to know thou art so! ', 63: '䷪ \n\n\nKWAI: Cutting off; displeasure; front thy foe;but show reluctance due in acting so.\n\n\nLay well thy plans before the march begins.\nSeek loyal friends and have no fear of gins.\nFight on alone; persistant courage wins!\nDefeated, acquiesce — smiles conquer grins.\nUproot small men like purslane — tan their skins;\nCut off is he — and evil his end be! ', 64: '䷀ \n\n\nKHIEN: Originating from the term,\npiercing advantageous, right and firm. \n\n\nThe dragon lurks: it is no time to act.\nThe dragon’s in the field: now make thy pact.\nBe active, watchful, using care and tact.\nThe dragon leaps; a bursting cataract.\nThe dragon ploughs the sky with pace exact.\nExceed not, dragon, lest thy force react.\n\n(If all this heavenly host of dragons lacked\nTheir heads, good fortune would become a fact.) '
 }
 
-			$(".cards").hide();
+			$(".cards").fadeOut(777);
 			
 			function flip(id){
 				id.css({"transform": "scaleY(-1)"})
@@ -296,7 +362,7 @@ function magick8ball(finance){
 			function oneCardSpread(){
 				var arrDigits = []
 
-				$(".data").hide();
+				$(".data").fadeOut(777);
 				getData(arrDigits, function(err, data){
 					arrDigits.push(data);
 
@@ -329,7 +395,7 @@ function magick8ball(finance){
 			}
 
 			function kelticCross(iterations, arrDigits){
-				$(".data").hide();
+				$(".data").fadeOut(777);
 				getData(arrDigits, function(err, data){
 					arrDigits.push(data);
 
@@ -861,6 +927,10 @@ table {
 
 	h1{
 		border-bottom: 4px dotted crimson;
+	}
+
+	#geoReading{
+		font-size: 24px;
 	}
 
 
