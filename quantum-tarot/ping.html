@@ -9,7 +9,7 @@
 </header>
 <body>
 	<br>
-	<ul class="front_ul"><li><a href="#" class="uint16">uint16</a></li><li><a class="draw_tarot" id="draw_one" href="#">One Card Spread</a></li><li><a class="draw_tarot" id="keltic_cross" href="#">Keltic Cross</a></li><li><a class="draw_tarot" id="draw_key" href="#">Trinity Spread</a></li><li><a class="draw_tarot" id="draw_major_key" href="#">Opening of the Key Spread</a></li><li><a id="draw_iching" href="#">IChing reading</a></li><li><a href="#" id="draw_geomancy">Geomance</a></li><li><a class="draw8 8ball" href="#">8BALL</a></li><li><a href="#" class="draw_fin_8 8ball">Financial 8BALL</a></li><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></ul>
+	<ul class="front_ul"><li><a href="#" class="hex16">hex16</a></li><li><a class="draw_tarot" id="draw_one" href="#">One Card Spread</a></li><li><a class="draw_tarot" id="keltic_cross" href="#">Keltic Cross</a></li><li><a class="draw_tarot" id="draw_key" href="#">Trinity Spread</a></li><li><a class="draw_tarot" id="draw_major_key" href="#">Opening of the Key Spread</a></li><li><a id="draw_iching" href="#">IChing reading</a></li><li><a href="#" id="draw_geomancy">Geomance</a></li><li><a class="draw8 8ball" href="#">8BALL</a></li><li><a href="#" class="draw_fin_8 8ball">Financial 8BALL</a></li><li><a href="https://dubioustunic.github.io/godhand-tables/index.html">Liber 777 app</a></li></ul>
 	<br>
 	<h2 class="quantum_shift"></h2>
 	<br>
@@ -138,6 +138,9 @@
 			</div>
 		
 	</div>
+	<div id = "hex16_holder">
+
+	</div>
 	<div class="iching">
 		<div class="iching_data">
 
@@ -163,8 +166,8 @@ function beep() {
 //"okay so he does have some ability to program"
 //you jews are fetishizing the math
 //async is real programming
-function uint16(){
-	$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint16&size=16", function(data){
+function hex16(){
+	$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=hex16&size=8", function(data){
 		var dat = data.data[0];
 
 		//console.log(data);
@@ -172,7 +175,9 @@ function uint16(){
 		//if the returned number is less than the array of messages size
 		//jas((mean))
 
-		$("#uint16_holder").append(dat);
+		//modulo Caudus draconus / LENGARDIUM LEVIOSA!!
+		$("#hex16_holder").append(dat);
+		console.log(dat);
 		beep();
 	})
 }
@@ -277,17 +282,17 @@ function magick8ball(finance){
 			$(".tarot").fadeOut(777);
 			$(".iching").fadeOut(777);
 			$("#geoReading").fadeOut(777);
-			$("#uint16_holder").fadeOut(777);
+			$("#hex16_holder").fadeOut(777);
 			$("#ball_fu_slave").fadeOut(777);
 
-			$(".uint16").click(function(e){
+			$(".hex16").click(function(e){
 				e.preventDefault();
 				$(".intro").fadeOut(777);
 				$(".tarot").fadeOut(777);
 				$(".iching").fadeOut(777);
 				$("#ball_fu_slave").fadeOut(777);
-				$("#uint16_holder").fadeIn(808);
-				uint16();
+				$("#hex16_holder").fadeIn(808);
+				hex16();
 			})
 
 			$("#draw_geomancy").click(function(e){
@@ -296,7 +301,7 @@ function magick8ball(finance){
 				$(".tarot").fadeOut(777);
 				$(".iching").fadeOut(777);
 				$("#ball_fu_slave").fadeOut(777);
-				$("#uint16_holder").fadeOut(777);
+				$("#hex16_holder").fadeOut(777);
 				$("#geoReading").empty();
 				$("#geoReading").fadeIn(777);
 				geomanceMaester()
@@ -308,7 +313,7 @@ function magick8ball(finance){
 				$(".intro").fadeOut(777);
 				$(".tarot").fadeOut(777);
 				$(".iching").fadeOut(777);
-				$("#uint16_holder").fadeOut(777);
+				$("#hex16_holder").fadeOut(777);
 				$("#geoReading").fadeOut(777);
 				$("#ball_fu_slave").empty();
 				$("#ball_fu_slave").fadeIn();				
@@ -328,7 +333,7 @@ function magick8ball(finance){
 				$(".tarot").fadeOut(777);
 				$(".iching").fadeOut(777);
 				$("#geoReading").fadeOut(777);
-				$("#uint16_holder").fadeOut(777);
+				$("#hex16_holder").fadeOut(777);
 				$("#ball_fu_slave").fadeOut(777);
 				$(".intro").fadeIn();
 			})
@@ -345,7 +350,7 @@ function magick8ball(finance){
 				$("#geoReading").fadeOut(777);
 				//((USSS))
 				//buh-bye
-				$("#uint16_holder").fadeOut(777);
+				$("#hex16_holder").fadeOut(777);
 				$("#ball_fu_slave").fadeOut(777);
 				e.preventDefault();
 				$(".quantum-shift").text("Draw Tarot");
