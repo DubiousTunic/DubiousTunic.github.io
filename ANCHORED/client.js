@@ -35,8 +35,7 @@ function _ANCHOR_route(origin){
 	showDiv(link.path);
 }
 
-function _ANCHOR_page(){
-	console.log(window.location.hash, page)
+function _ANCHOR_page(){	
 	return getLink(window.location.hash);
 }
 
