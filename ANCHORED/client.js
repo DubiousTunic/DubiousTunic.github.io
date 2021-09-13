@@ -41,7 +41,7 @@ function _ANCHOR_route(origin){
 }
 
 function _ANCHOR_page(){	
-	return getLink(window.location.hash);
+	return getLink(window.location.hash).page;
 }
 
 //back/forward
