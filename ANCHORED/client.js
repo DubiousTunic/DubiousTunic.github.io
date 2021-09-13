@@ -6,7 +6,7 @@ $(document).ready(function(){
 	//routes the path on load
 	_ANCHOR_route(window.location.hash + window.location.search)
 
-	$(".anch_link").click(function(e){
+	$("._anch_link").click(function(e){
 		e.preventDefault();
 		_ANCHOR_route("#" + anchorPath($(this)) + anchorParams($(this)))
 	})
@@ -31,13 +31,18 @@ function _ANCHOR_route(origin){
 	hidePartial();
 	var link = getLink(window.location.pathname + origin);			
 	history.pushState(origin, '', origin)
-	router(link.path, link.params)
+	//router(link.path, link.params)
 	showDiv(link.path);
 }
 
+function _ANCHOR_page(){
+	console.log(window.location.hash, page)
+	return getLink(window.location.hash);
+}
+
+//back/forward
 window.addEventListener('popstate', function(event){
 	var origin = event.state;
-
 	//route(path);
 	if(origin !== null){	
 		var link = getLink(origin);
@@ -59,11 +64,3 @@ function anchorParams(href){
 	return href.attr("rel");
 }
 
-//make back/forward work
-
-//main router fn
-function router(path, params){
-
-
-	//display path, params in url
-}
