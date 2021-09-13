@@ -1,7 +1,8 @@
 <br><br><h2><a href="http://dubioustunic.github.io/vr-philosophy-graph/page.html">VR Graph Search of the History of Philosophy</a></h2>
 <h2><a href="http://dubioustunic.github.io/godhand-tables/index.html">godhand: tables</a></h2>
 <h2><a href="http://pharaoh.ninja">p2p Netflix clone</a></h2>
-<h2><a href="http://dubioustunic.github.io/quantum-tarot/ping.html">Quantum Tarot</a></h2>
+<h2><a href="http://dubioustunic.github.io/quantum-tarot/ping.html">Quantum Divine</a></h2>
+<h2><a href="http://changeable-coherent-hardhat.glitch.me/">Quantum Tarot VR</a></h2>
 <h2><a href="http://dubioustunic.github.io/ANCHORED/sample.html">ANCHORED open source router</a></h2>
 <h2><a href="https://mega.nz/file/DV411CTa#0Wswmis3Zdn8IKegbKU25fPjuuPJltiPgjJO4c8OV1Q">4chan QAnon Oracle Firefox Extension</a></h2>
 <br>
