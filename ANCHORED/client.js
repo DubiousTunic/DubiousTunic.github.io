@@ -26,6 +26,11 @@ function getLink(origin){
 	}
 }
 
+function _ANCHOR_load(){
+	_ANCHOR_route(window.location.hash + window.location.search);
+}
+
+
 function _ANCHOR_route(origin){
 	console.log("INITIALIZE ORIGIN " + origin);
 	hidePartial();
