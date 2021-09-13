@@ -11,6 +11,9 @@ Include Jquery (tested as low as 1.12.4)
 4) Add class "partial" to div partial(s)<br>
 Now clicking the links changes the "page" (hides/shows the partials)! 
 
+on page load (this updates the site based on loading the page with #anchor ?params)
+_ANCHOR_load();
+
 manually route<br>
 _ANCHOR_route("#tree_frog" + "?param1=x")
 
