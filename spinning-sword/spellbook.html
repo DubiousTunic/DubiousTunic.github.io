@@ -1,0 +1,137 @@
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/build/pdf.min.js"></script>
+	<script
+			  src="https://code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous"></script>
+</head>
+<body>
+	<h1>SPINNING SWORD</h1>
+	<button id="QRNG">QRNG</button>ONLY CLICK ONCE
+	<br>
+	<div id="spellbook"></div>
+
+
+</body>
+<script>
+	$(document).ready(function(){
+		var end0r;
+		var kount;
+
+		//atl
+		var arr = [];
+
+		//it's fine to make so many iterations because making a spellbook isn't something one spams
+
+		$("#QRNG").click(function(e){
+			e.preventDefault();
+			$("#spellbook").empty();			
+			const hyperlink = $("#hyperlink").val();
+
+			getText(hyperlink, function(err, result){
+				t3_weaver(256, result);
+			})
+			
+		})
+
+		//array of hex16 words
+		var arr2 = [];
+
+		//called once t1_weaver completes 256 iterations
+		function chuck(end0r){
+			//first partition
+			var index;
+			t1_weaver(function(err, ka){
+				index = 20317 * ka;
+				t1_weaver(function(err,kaa){
+					index += 1337 * kaa
+					t1_weaver(function(err,kaaa){
+						index += 88 * kaaa;
+						t1_weaver(function(err, ra){
+							obelisk(index, ra, end0r, function(err, result){
+								var spell = result;
+								$("#spellbook").append(spell);
+								$("#spellbook").append("<br>");
+							});
+						});
+					})
+				})				
+			});
+			//this gives you the array of words
+
+
+			//now it's index => arr of words
+
+		}
+
+		function obelisk(index, ra, end0r, cb){
+		    var words = end0r.split(" ");
+		    var spell = "";
+		    for(var i = 0; i < ra; i++){
+		    	spell += words[(index - 1) + i] + " ";
+		    	
+		    }
+		    								console.log("still working........");
+		    cb(null, spell);
+			
+		}
+
+		function t3_weaver(i, end0r){
+
+			chuck(end0r);
+			if(i!==1){
+				t3_weaver(i - 1, end0r);
+			}
+		}
+
+		function t1_weaver(cb){
+			$.get("https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8", function(data){
+				var dat = data.data[0];
+				//savant
+				//jas((mean))[arr]
+
+				//there's an external learning function (angle) that will eventually realize i put +1 here		 
+				//arr.push((dat + 1)%16); //the holy bible
+				cb(null, dat%16);
+				//if(i !== 1){
+					//t1_weaver(i - 1)										
+				//}
+				//else{
+				//}
+				
+			})
+		}
+
+		
+		
+		function getText(pdfUrl, cb){
+
+		  var pdf = pdfjsLib.getDocument(encodeURI("https://holybooks-lichtenbergpress.netdna-ssl.com/wp-content/uploads/The-Secret-Teachings-of-All-Ages.pdf")); //imagine if this were CIA
+		  pdf.promise.then(function(pdf) { // get all pages text
+		    var maxPages = pdf._pdfInfo.numPages;
+		    var countPromises = []; // collecting all page promises
+		    for (var j = 1; j <= maxPages; j++) {
+		      var page = pdf.getPage(j);
+
+		      var txt = "";
+		      countPromises.push(page.then(function(page) { // add page promise
+		        var textContent = page.getTextContent();
+		        return textContent.then(function(text){ // return content promise
+		          return text.items.map(function (s) { return s.str; }).join(''); // value page text 
+		        });
+		      }));
+		    }
+		    // Wait for all pages and join text
+		    return Promise.all(countPromises).then(function (texts) {
+		    	console.log(texts.join(''))
+		    	cb(null, texts.join('')); // hope
+		      return texts.join('');
+		    });
+		  });
+		}
+
+
+	})
+	
+
+</script>
