@@ -12,13 +12,13 @@ Include Jquery (tested as low as 1.12.4)
 Now clicking the links changes the "page" (hides/shows the partials)! 
 
 on page load (this updates the site based on loading the page with #anchor ?params)
-_ANCHOR_load();
+_ANCHORED_load();
 
 manually route<br>
-_ANCHOR_route("#tree_frog" + "?param1=x")
+_ANCHORED_route("#tree_frog" + "?param1=x")
 
 check page<br>
-if(_ANCHOR_page() === "tree_frog){
+if(_ANCHORED_page() === "tree_frog){
 }
 
 to change the params change the "rel" tag of the a element<br>
@@ -26,7 +26,7 @@ $(".poison_dart_frog").attr("rel", "?param1=a&param2=b&param3=c")
 
 route can come from the server<br>
 $.post("/update", function(res){
-  _ANCHOR_route("#tree_frog" + "?param1=x")
+  _ANCHORED_route("#tree_frog" + "?param1=x")
 })
 
 params can come from the server<br>
