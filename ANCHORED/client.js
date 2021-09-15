@@ -8,6 +8,7 @@ $("._anch_link").click(function(e){
 	_ANCHORED_route("#" + anchorPath($(this)) + anchorParams($(this)))
 })
 
+})
 
 
 function hidePartial(){
@@ -62,4 +63,4 @@ function anchorPath(href){
 function anchorParams(href){
 	return href.attr("rel");
 }
-})
+
