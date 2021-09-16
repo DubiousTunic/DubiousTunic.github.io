@@ -166,9 +166,10 @@ function mintPage(){
 //title, content
 
 //i need to go to CONCENTRATION_CAMP
-function addChapter(title, content){
+function addChapter(title, index, content){
 	var heading = currentPage.heading;
-	currentPage.contents.push({
+	var i = index ? parseInt(index) : currentPage.contents.length;
+	currentPage.contents.splice(i, 0, {
 		subheading : title,
 		content: content
 	})
@@ -186,6 +187,16 @@ function deleteChapter(id){
 
 	var index = pages.map(function(e){return e.heading; }).indexOf(heading)
 	pages[index] = currentPage;
+	lance();
+}
+
+function deletePage(){
+	var heading = currentPage.heading;
+
+	var index = pages.map(function(e){return e.heading; }).indexOf(heading)
+
+	pages.splice(index, 1);
+
 	lance();
 }
 
@@ -259,7 +270,6 @@ function createPage(page){
 	})
 
 
-
 	/* SRC img */
 	var img = document.createElement("img");
 	$(img).attr("id", "src_img");
@@ -300,6 +310,17 @@ function createPage(page){
 	$(sidebar).addClass("sidebar");
 	//[]D[][]\/[][]D
 	//i don't know what i did
+	var button = document.createElement("button");
+	$(sidebar).append(button);
+	$(button).click(function(e){
+		e.preventDefault();
+		//pig american
+		deletePage();
+	})
+	$(button).attr("id", "delete_page_button");
+	$(button).text("DELETE Page");
+
+
 	var div = document.createElement("div");
 	var partial = $(main).append(div)
 	$(partial).addClass("partial");
@@ -346,6 +367,7 @@ function createPage(page){
 	$(partial).append(span);
 	var ol = document.createElement("ol");
 	$(partial).append(ol);
+	$(ol).attr('start', 0)
 	$(partial).append("<br>")
 	//AM I NOT MERCIFUL
 	//foreach to create index
@@ -429,8 +451,8 @@ function createPage(page){
 		//let me add the buttons first
 		$(content_edit).attr("id", "edit_content_input_" + i);
 		$(partial).append(content_edit);
-		$(content_edit).height("556px");
-		$(content_edit).width("777px");
+		$(content_edit).height("444px");
+		$(content_edit).width("555px");
 		$(content_edit).hide();
 		//we invented Legato Jasmine and me OH THAT'S WHAT THAT IS
 
@@ -449,6 +471,7 @@ function createPage(page){
 		var content_button = document.createElement("button");
 		$(content_button).addClass("edit_button");
 		$(content_button).attr("id", "edit_content_button_" + i);
+		$(partial).append("<br>")
 		$(partial).append(content_button);
 		$(partial).append("<br>")
 		$(content_button).text("Update");
@@ -491,18 +514,24 @@ function createPage(page){
 	var content_title = document.createElement("input")
 	var content_input = document.createElement("textarea")
 	$(partial).append(content_title);
+	var content_index = document.createElement("input");
+	$(partial).append(content_index);
+	$(content_index).attr("id", "content_index")
+	$(content_index).attr("placeholder", "index: 0-n")
 	$(partial).append("<br>")
 	$(partial).append(content_input);
 	$(content_title).hide();
+	$(content_index).hide();
 	$(content_input).hide();
 	$(content_title).attr("placeholder", "Title")
 	$(content_input).attr("placeholder", "Content")
-	$(content_input).width("556px");
-	$(content_input).height("777px");
+	$(content_input).width("555px");
+	$(content_input).height("444px");
 	$(content_button).click(function(e){
 		e.preventDefault();
 		$(content_title).fadeToggle(757);
 		$(content_input).fadeToggle(757);
+		$(content_index).fadeToggle(757);
 		$(section_update_button).fadeToggle(757)
 	})
 
@@ -514,7 +543,7 @@ function createPage(page){
 	$(section_update_button).hide();
 	$(section_update_button).click(function(e){
 		e.preventDefault();
-		addChapter($(content_title).val(), $(content_input).val());
+		addChapter($(content_title).val(), $(content_index).val(), $(content_input).val());
 	})
 
 	
