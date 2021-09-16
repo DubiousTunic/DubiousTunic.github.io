@@ -1,6 +1,15 @@
-h1, h2, h3{
-	font-family: Bookman;
+h1:not(:first-child), h2, h3{
 	display: inline-block;
+	font-family: "Bookman", Georgia, Arial;
+	
+}
+
+body, h1:first-child{
+	font-family:  "Times", serif;
+}
+
+h1:first-child{
+	font-variant: small-caps;
 }
 
 span{
@@ -8,8 +17,7 @@ span{
 }
 
 .wiki{
-	width: 1079px;
-	margin: 0 auto;
+	margin: 0% 5% 0% 5%;
 }
 
 .editContent{
@@ -18,4 +26,34 @@ span{
 
 .contentDiv{
 	padding: 33px;
+
+}
+
+.reference{
+	font-size: 8px;
+}
+
+/* this is a span because i fucking hate the p  REEEEEEEEEEEEEEEE */
+.contentDiv span{
+	text-justify: justified;
+}
+
+#table_of_chapters{
+	font-variant: small-caps;
+}
+
+.main{
+	width: 77%;
+	float: left;
+}
+
+#src_img{
+	/* position: relative; fills sidebar container */
+	width: 100%;
+}
+
+.sidebar{
+	width: 13%;
+	float: left;
+	padding-left: 33px;
 }
