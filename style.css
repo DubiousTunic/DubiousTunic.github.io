@@ -1,0 +1,21 @@
+h1, h2, h3{
+	font-family: Bookman;
+	display: inline-block;
+}
+
+span{
+	font-size: 13px;
+}
+
+.wiki{
+	width: 1079px;
+	margin: 0 auto;
+}
+
+.editContent{
+	font-size: 10px;
+}
+
+.contentDiv{
+	padding: 33px;
+}
