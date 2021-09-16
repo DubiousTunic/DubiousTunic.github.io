@@ -29,6 +29,10 @@ window.addEventListener('popstate', function(event){
 	}									
 })
 
+function _ANCHOR3D_hyperlink(hyperlink){
+	window.location.replace(hyperlink);
+}
+
 
 function hidePartial(){
 	$(".partial").hide();
@@ -62,7 +66,7 @@ function _ANCHOR3D_route(origin){
 
 
 function showDiv(path){
-	$("div." + path).show();
+	$("div." + path).fadeIn();
 }
 
 function anchorPath(href){
