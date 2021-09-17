@@ -83,10 +83,8 @@ function updateJSONBlob(partition, id){
 	}
 	else if(partition === "subheading"){
 		//i herd you liek mudkips
-		currentPage.contents[id].subheading = $("#edit_subheading_input_" + id).val()		
-	}
-	else if(partition === "content"){
-		currentPage.contents[id].content =  $("#edit_content_input_" + id).val()
+		currentPage.contents[id].subheading = $("#edit_subheading_input_" + id).val()	
+		currentPage.contents[id].content =  $("#edit_content_input_" + id).val()	
 	}
 
 	var index = pages.map(function(e) { return e.heading; }).indexOf(heading);
@@ -456,6 +454,8 @@ function createPage(page){
 			//these numbers are actually crucially important because all pRNG is time-Based
 			$(subheading_edit).fadeToggle(747);
 			$(subheading_button).fadeToggle(747);
+			$(content_edit).fadeToggle(747);
+			$(content_button).fadeToggle(747);
 			$(content_delete_button).fadeToggle(747);
 		})
 		$(subheading_button).text("Update");
@@ -463,7 +463,7 @@ function createPage(page){
 
 		//delete button
 		var content_delete_button = document.createElement("button");
-		$(content_delete_button).text("Delete");
+		$(content_delete_button).text("Full Delete");
 		$(partial).append(content_delete_button);
 		$(content_delete_button).hide();
 		$(content_delete_button).click(function(e){
@@ -476,10 +476,10 @@ function createPage(page){
 		$(partial).append(div);
 		var a2 = document.createElement("a");
 		
-		$(a2).text("[edit]");
-		$(a2).attr("id", "edit_content_" + i)
-		$(a2).addClass("editContent")
-		$(a2).attr("href", "#");
+		//$(a2).text("[edit]");
+		//$(a2).attr("id", "edit_content_" + i)
+		//$(a2).addClass("editContent")
+		//$(a2).attr("href", "#");
 		//create an overlay on click
 		var content_edit = document.createElement("textarea");
 		//now we're gonna access this in the callback from JSONBlob PUT
@@ -491,25 +491,23 @@ function createPage(page){
 		$(content_edit).hide();
 		//we invented Legato Jasmine and me OH THAT'S WHAT THAT IS
 
-		$(a2).click(function(e){
+		/*$(a2).click(function(e){
 			e.preventDefault();
 			//these numbers are actually crucially important because all pRNG is time-Based
 			$(content_edit).fadeToggle(747);
 			$(content_button).fadeToggle(747);
-		})
+		})*/
 		var span = document.createElement("span")
 		$(div).append(span) //USSS slave
 		$(span).append(content.content);	
 		$(span).attr("id", "content_span_" + i);
 		$(content_edit).val($(span).html())
-		$(div).append(a2);
+		//$(div).append(a2);
 		var content_button = document.createElement("button");
 		$(content_button).addClass("edit_button");
 		$(content_button).attr("id", "edit_content_button_" + i);
 		$(partial).append("<br>")
-		$(partial).append(content_button);
-		$(partial).append("<br>")
-		$(content_button).text("Update");
+		
 		$(content_button).hide();
 
 		//this needs to go here because the page doesn't automatically load the event
@@ -528,9 +526,9 @@ function createPage(page){
 					console.log("here");
 					updateJSONBlob("subheading", id);
 					break;
-				case "edit_content_button_" + id:
+				/*case "edit_content_button_" + id:
 					updateJSONBlob("content", id);
-					break;
+					break;*/
 				default:
 					console.log("button error");
 					break;
