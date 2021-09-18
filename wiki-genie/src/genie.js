@@ -356,11 +356,16 @@ function createPage(page){
 	})
 
 	$(sidebar).append(imgEdit);
+	var content_button = document.createElement("button");
+	$(content_button).text("Mint Chapter");
+	$(sidebar).append("<br><br><br>")
+	$(sidebar).append(content_button);
+
 
 	$(sidebar).addClass("sidebar");
 
 
-
+	//main partial
 	var div = document.createElement("div");
 	var partial = $(main).append(div)
 	$(partial).addClass("partial");
@@ -406,9 +411,6 @@ function createPage(page){
 	$(partial).append("<br><br>")
 	$(partial).append(span);
 	$(partial).append("<br>")
-	var content_button = document.createElement("button");
-	$(content_button).text("Mint Chapter");
-	$(partial).append(content_button);
 	var ol = document.createElement("ol");
 	$(partial).append(ol);
 	$(ol).attr('start', 0)
