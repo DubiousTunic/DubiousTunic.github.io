@@ -22,7 +22,9 @@ function _WIKI_load(doc){
 	parseJSON(doc, function(err, result){
 		console.log(result);
 		pages = result;
-
+		if(!pages[0]){
+			mintPage("Hello World");
+		}
 		//if(pages){
 			//_ANCHOR3D_route("#" + pages[0].hyperlink)
 
@@ -115,6 +117,7 @@ function updateJSONBlob(partition, id){
 
 }
 
+//someone else's stinky
 function linkify(inputText) {
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
@@ -530,8 +533,8 @@ function createPage(page){
 		//note this also applies edit_button event to the heading above
 		$(".edit_button").click(function(e){
 			e.preventDefault();
-			var id = $(this).attr("id").slice(-1);
-			//CAMP AVE
+			var id = parseInt($(this).attr("id").substr($(this).attr("id").lastIndexOf("_") + 1))
+
 			//yes the kakadaimon gave me a head wound and it is going to be miraculously healed
 			console.log(id);
 			switch($(this).attr("id")){
