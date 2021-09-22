@@ -417,7 +417,8 @@ function createPage(page){
 	var ol = document.createElement("ol");
 	$(partial).append(ol);
 	$(ol).attr('start', 0)
-	$(ol).css("font-size" , "12px")
+	//is someone using a shrink ray
+	$(ol).css("font-size" , "15px")
 	//add Chapter
 	$(partial).append("<br>")
 	//AM I NOT MERCIFUL
@@ -429,7 +430,7 @@ function createPage(page){
 		var li = document.createElement("li");
 		$(ol).append(li);
 		var a = document.createElement("a");
-
+		$(li, a).css("font-size" : "15px")
 		$(li).append(a);
 		$(a).text(content.subheading);
 		$(a).attr("href" , "#");
