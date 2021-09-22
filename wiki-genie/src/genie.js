@@ -14,11 +14,13 @@ $(document).ready(function(){
 })
 
 var pages;
+var hyperlink;
 
 function _WIKI_load(doc){
 	//see how we call parseJSON first, because it is async, now
 	//the result gets handed back in a callback function, THEN we store the
 	//item in the db and route the page
+	hyperlink = doc;
 	parseJSON(doc, function(err, result){
 		console.log(result);
 		pages = result;
@@ -79,7 +81,7 @@ function updateJSONBlob(partition, id){
 
 	var heading = currentPage.heading;
 	console.log(heading);
-	
+
 	var deleting = false;
 	var currentPageHeading;
 
@@ -142,7 +144,7 @@ function lance(){
 	$.ajax({
 		type: "PUT",
 		contentType : "application/json",
-		url : "https://jsonblob.com/api/jsonBlob/887868769184268288",
+		url : hyperlink,
 		data : JSON.stringify(pages),
 		success : function(){
 			_ANCHOR3D_route("#" + _ANCHOR3D_page());
@@ -175,6 +177,8 @@ function mintPage(txt){
 	}			
 
 	createPage(page)
+
+	currentPage = page;
 	
 	if(pages.length > 0)
 		pages.push(page);
