@@ -99,9 +99,9 @@ function updateJSONBlob(partition, id){
 	}
 	else if(partition === "subheading"){
 		//i herd you liek mudkips
+		console.log(currentPage.contents);
 		currentPage.contents[id].subheading = $("#edit_subheading_input_" + id).val()	
 		currentPage.contents[id].content =  $("#edit_content_input_" + id).val()	
-
 	}
 
 	if(!deleting){
@@ -429,7 +429,7 @@ function createPage(page){
 	$(partial).append("<br>")
 	var ol = document.createElement("ol");
 	$(partial).append(ol);
-	//$(ol).attr('start', 0)
+	$(ol).attr('start', 0)
 	//is someone using a shrink ray
 	$(ol).css("font-size" , "15px")
 	//add Chapter
@@ -439,8 +439,7 @@ function createPage(page){
 	//AM I NOT MERCIFUL
 	//foreach to create index
 	page.contents.forEach(function(content, i){
-		//add to ul this is the Table of Chapters
-		i++;
+		//add to ul this is the Table of Chapters		
 		//--TABLE OF CHAPTERS, cont.--
 		var li = document.createElement("li");
 		$(ol).append(li);
@@ -459,8 +458,11 @@ function createPage(page){
 		var h2 = document.createElement("h2");
 
 		$(partial).append(h2);
-		$(h2).text(content.subheading);
-		$(h2).attr("id", content.subheading.replace(/\W/g,'_'));
+		if(content.subheading){
+			$(h2).text(content.subheading);
+			$(h2).attr("id", content.subheading.replace(/\W/g,'_'));	
+		}
+		
 		var a1 = document.createElement("a");
 		$(partial).append(a1);
 		$(a1).text("[edit]");
@@ -560,7 +562,8 @@ function createPage(page){
 					break;
 				case "edit_subheading_button_" + id:
 					console.log("here");
-					updateJSONBlob("subheading", id);
+					console.log(id);
+					updateJSONBlob("subheading", id); // -1 because i'm the fuckin asshole
 					break;
 				/*case "edit_content_button_" + id:
 					updateJSONBlob("content", id);
