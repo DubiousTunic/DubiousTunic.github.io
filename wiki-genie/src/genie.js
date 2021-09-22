@@ -78,7 +78,8 @@ function updateJSONBlob(partition, id){
 	console.log(partition, id);
 
 	var heading = currentPage.heading;
-
+	console.log(heading);
+	
 	var deleting = false;
 	var currentPageHeading;
 
@@ -87,7 +88,7 @@ function updateJSONBlob(partition, id){
 			deleting = true;
 		}
 		else{
-			currentPagHeading = $("#edit_heading_input").val();
+			currentPageHeading = $("#edit_heading_input").val();
 			currentPage.heading = currentPageHeading;
 			currentPage.hyperlink = linkify($("#edit_heading_input").val()).replace(/ /g,"_").toLowerCase();
 			_ANCHOR3D_hyperlink("#" + currentPage.hyperlink);
@@ -102,8 +103,9 @@ function updateJSONBlob(partition, id){
 	}
 
 	if(!deleting){
-		if(pages && pages.length > 0){
+		//if(pages && pages.length > 0){
 			var index = pages.map(function(e) { return e.heading; }).indexOf(heading);
+			console.log(index);
 			pages[index] = currentPage;
 
 			console.log(pages);
@@ -111,7 +113,7 @@ function updateJSONBlob(partition, id){
 			//TODO: streamline reference
 			//TODO: refactor with addChapter
 			lance()		
-		}
+		//}
 
 	}
 	else{
@@ -428,6 +430,8 @@ function createPage(page){
 	$(ol).css("font-size" , "15px")
 	//add Chapter
 	$(partial).append("<br>")
+
+
 	//AM I NOT MERCIFUL
 	//foreach to create index
 	page.contents.forEach(function(content, i){
