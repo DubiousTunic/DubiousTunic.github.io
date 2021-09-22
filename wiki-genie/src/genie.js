@@ -417,7 +417,7 @@ function createPage(page){
 	$(partial).append("<br>")
 	var ol = document.createElement("ol");
 	$(partial).append(ol);
-	$(ol).attr('start', 0)
+	//$(ol).attr('start', 0)
 	//is someone using a shrink ray
 	$(ol).css("font-size" , "15px")
 	//add Chapter
@@ -426,7 +426,7 @@ function createPage(page){
 	//foreach to create index
 	page.contents.forEach(function(content, i){
 		//add to ul this is the Table of Chapters
-
+		i++;
 		//--TABLE OF CHAPTERS, cont.--
 		var li = document.createElement("li");
 		$(ol).append(li);
@@ -647,7 +647,7 @@ function createPage(page){
 	manifestHyperlink();
 }
 
-
+//eschatology^333
 function manifestHyperlink(){
 	$("hyperlink").each(function(){
 		console.log("hyper");
@@ -697,7 +697,7 @@ function manifestReference(page){
 			$(ol).attr("start", 0);
 			
 
-		    for (var j=0; j<page.contents.length; j++) {
+		    for (var j=1; j<=page.contents.length; j++) {
 		    	//get char length of ref.text
 		    	//j is the content index
 		    	console.log(ref);
