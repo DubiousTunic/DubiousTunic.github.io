@@ -430,7 +430,7 @@ function createPage(page){
 		var li = document.createElement("li");
 		$(ol).append(li);
 		var a = document.createElement("a");
-		$(li, a).css("font-size" : "15px")
+		$(li, a).css("font-size" , "15px")
 		$(li).append(a);
 		$(a).text(content.subheading);
 		$(a).attr("href" , "#");
