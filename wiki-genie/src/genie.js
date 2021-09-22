@@ -411,6 +411,7 @@ function createPage(page){
 	var span = document.createElement("span");
 	$(span).text("Table of Chapters");
 	$(span).attr("id", "table_of_chapters");
+	$(span).css("font-size", "18px");
 	$(partial).append("<br><br>")
 	$(partial).append(span);
 	$(partial).append("<br>")
