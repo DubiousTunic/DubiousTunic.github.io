@@ -417,6 +417,7 @@ function createPage(page){
 	var ol = document.createElement("ol");
 	$(partial).append(ol);
 	$(ol).attr('start', 0)
+	$(ol).css("font-size" , "12px")
 	//add Chapter
 	$(partial).append("<br>")
 	//AM I NOT MERCIFUL
