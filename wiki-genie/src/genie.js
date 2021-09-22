@@ -101,15 +101,18 @@ function updateJSONBlob(partition, id){
 
 	}
 
-	if(!deleting){	
-		var index = pages.map(function(e) { return e.heading; }).indexOf(heading);
-		pages[index] = currentPage;
+	if(!deleting){
+		if(pages && pages.length > 0){
+			var index = pages.map(function(e) { return e.heading; }).indexOf(heading);
+			pages[index] = currentPage;
 
-		console.log(pages);
+			console.log(pages);
 
-		//TODO: streamline reference
-		//TODO: refactor with addChapter
-		lance()	
+			//TODO: streamline reference
+			//TODO: refactor with addChapter
+			lance()		
+		}
+
 	}
 	else{
 		deletePage()
@@ -171,7 +174,10 @@ function mintPage(txt){
 
 	createPage(page)
 	
-	pages.push(page);
+	if(pages.length > 0)
+		pages.push(page);
+	else 
+		pages = [page];
 
 	lance();
 
