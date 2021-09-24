@@ -368,13 +368,13 @@ function buildPartial(cb){
 
 			var snippet_img = document.createElement("img");
 
-			$(snippet_img).attr("src", node.img).width("444px");
+			$(snippet_img).attr("src", node.img).css("max-width, 444px");
 			$(snippet_div).append("<br>")
 			$(snippet_div).append(snippet_img)
 			$(snippet_div).append("<br>")
 			var span = document.createElement("span")
 
-			$(span).text(node.content.substring(0, 256) + "...");
+			$(span).html(node.content.substring(0, 256) + "...");
 			greentext($(snippet_div), $(span).text())
 			//$(snippet_div).append(span);
 
@@ -403,8 +403,8 @@ function buildPartial(cb){
 		var post_content_div = document.createElement("div");		
 		var post_content = document.createElement("p");
 		$(post_content_div).css("background-color", "white")
-		$(post_content).text(node.content);
-		$(post_content_div).css({"margin" : "0px 33px 0px 33px", "border-top": "3px dotted CRIMSON", "font-size" : "13px", "border-radius" :"6px", "box-shadow" : "inset 3px 3px 3px #ABABAB", "text-justify" : "justified", "min-height" : "333px"})
+		$(post_content).html(node.content);
+		$(post_content_div).css({"margin" : "0px 33px 0px 33px", "border-top": "1px solid #0F0F0F", "font-size" : "13px", "border-radius" :"6px", "box-shadow" : "inset 3px 3px 3px #ABABAB", "text-justify" : "justified", "min-height" : "333px"})
 		$(post_content).css("padding" , "33px");
 
 		greentext($(post_content_div), $(post_content).text())
@@ -457,7 +457,7 @@ function buildPartial(cb){
 		})
 		//tzoah rotachot^333 (repeating of course)
 		var post_img = document.createElement("img");
-		$(post_img).attr("src", node.img).css({"margin" : "0 0 55px 123px", "width" : "444px"});
+		$(post_img).attr("src", node.img).css({"margin" : "0 0 55px 123px", "max-width" : "100%"});
 
 		$(h2_post_a).text(node.name);
 		$(h2_post).append(h2_post_a);
